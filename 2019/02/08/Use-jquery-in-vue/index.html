@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Windyard</title>
+<title>「译」 如何在 Vue 中（安全的）使用 jQuery 插件 - Windyard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -12,13 +12,20 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Windyard">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="作者：Anthony Gore原文链接：How To (Safely) Use A jQuery Plugin With Vue.js 在一个 UI 中同时使用 Vue.js 和 jQuery 并不是一个好主意。如果可能的话要避免这种情形。 不过既然你已经看到这里了，估计你是非要同时用 Vue 和 jQuery 不可了。或许是客户坚持要使用某个 jQuery 插件而你又没时间去把它用 Vue 重写">
+<meta name="keywords" content="VueJS,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」 如何在 Vue 中（安全的）使用 jQuery 插件">
+<meta property="og:url" content="http://yoursite.com/2019/02/08/Use-jquery-in-vue/index.html">
 <meta property="og:site_name" content="Windyard">
+<meta property="og:description" content="作者：Anthony Gore原文链接：How To (Safely) Use A jQuery Plugin With Vue.js 在一个 UI 中同时使用 Vue.js 和 jQuery 并不是一个好主意。如果可能的话要避免这种情形。 不过既然你已经看到这里了，估计你是非要同时用 Vue 和 jQuery 不可了。或许是客户坚持要使用某个 jQuery 插件而你又没时间去把它用 Vue 重写">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://yoursite.com/pictures/1-jq-in-vue/jquery_plugin_1.png">
+<meta property="og:updated_time" content="2019-03-24T12:54:03.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windyard">
+<meta name="twitter:title" content="「译」 如何在 Vue 中（安全的）使用 jQuery 插件">
+<meta name="twitter:description" content="作者：Anthony Gore原文链接：How To (Safely) Use A jQuery Plugin With Vue.js 在一个 UI 中同时使用 Vue.js 和 jQuery 并不是一个好主意。如果可能的话要避免这种情形。 不过既然你已经看到这里了，估计你是非要同时用 Vue 和 jQuery 不可了。或许是客户坚持要使用某个 jQuery 插件而你又没时间去把它用 Vue 重写">
+<meta name="twitter:image" content="http://yoursite.com/pictures/1-jq-in-vue/jquery_plugin_1.png">
 
 
 
@@ -103,11 +110,10 @@
 
     <section class="section">
     <div class="container">
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/02/08/Use-jquery-in-vue/" itemprop="url">「译」 如何在 Vue 中（安全的）使用 jQuery 插件</a>
+            「译」 如何在 Vue 中（安全的）使用 jQuery 插件
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -185,88 +191,52 @@
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/VueJS/">#VueJS</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/jQuery/">#jQuery</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/02/07/Testing-post/">Testing post</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
 
 
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/02/07/Testing-post/" itemprop="url">Testing post</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-02-07T13:24:51.000Z" itemprop="datePublished">2月 7 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            几秒 读完 (约 9 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>This is a testing post.<br>Created at February 7th, 2019, 21:26</p>
 
+<div class="comments">
+    <h3 class="title is-4">评论</h3>
     
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
     </div>
     
-    
-</article>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
-
-
-
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/02/02/hello-world/" itemprop="url">Hello World 2</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-02-02T05:01:50.045Z" itemprop="datePublished">2月 2 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            1 分钟 读完 (约 121 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
     </div>
 </section>
     <footer class="footer">
