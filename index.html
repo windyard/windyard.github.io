@@ -107,6 +107,58 @@
         <article class="article content gallery" itemscope="" itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/03/26/css-hardware-accelerate/" itemprop="url">「译」使用 CSS 硬件加速提升网站性能</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-26T11:59:59.000Z" itemprop="datePublished">3月 26 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 932 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong><em> 作者： <a href="https://blog.teamtreehouse.com/author/guillermohernandez" target="_blank" rel="noopener">Guil Hernandez</a> </em></strong><br><strong><em> 原文链接：<a href="https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css" target="_blank" rel="noopener">Increase Your Site’s Performance with Hardware-Accelerated CSS</a> </em></strong></p>
+<p>你知道我们可以把图像相关的 CSS 特性交给 GPU(图像处理单元) 处理，以利用硬件加速在浏览器中获得更好的渲染性能吗？</p>
+<p>当今的大多数电脑都有可用于硬件加速的显卡。因此，我们可以利用这些 GPU 资源去处理那些比较耗性能的特性，这样我们的网站和应用在浏览器中就能获得比单纯用 CPU 处理更好的性能表现。</p>
+<p>这篇文章里，我们会讲到桌面和手机端浏览器的 CSS 硬件加速。</p>
+<h2 id="桌面和手机端浏览器中的-CSS-硬件加速"><a href="#桌面和手机端浏览器中的-CSS-硬件加速" class="headerlink" title="桌面和手机端浏览器中的 CSS 硬件加速"></a><strong>桌面和手机端浏览器</strong>中的 CSS 硬件加速</h2><p>你有没有想过为什么有些 CSS 动画在浏览器中看起来比其他的更流畅些？</p>
+<p>CSS animations, transforms 和 transitions 默认并不会启用 GPU 加速，而是被浏览器内部的（比较慢的）软件引擎渲染。那么到底是什么强制浏览器切换到 GPU 模式呢？许多浏览器通过一些特定的 CSS 规则启用 GPU 加速。</p>
+<p>当前，Chrome, Firefox, Safari, IE9+ 和最新版的 Opera 都支持硬件加速；它们只有在检测到某个 DOM 元素可能会从中获益的时候才会应用硬件加速。在 CSS 中，最显眼的迹象就是这个元素使用了 3D 变换。</p>
+<p>例如：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(250px,250px,250px)</span><br><span class="line">   <span class="hljs-built_in">rotate3d</span>(250px,250px,250px,-120deg)</span><br><span class="line">   <span class="hljs-built_in">scale3d</span>(0.5, 0.5, 0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>某些时候，你可能并不需要 3D 变换但仍然想利用硬件加速。这时候有几个非常顺手的 CSS 特性可以用来触发浏览器的 GPU 加速。</p>
+<p>尽管我们的元素并不是在 3D 空间中做动画，我们仍然可以启用 3D 渲染。闲话休提，<code>transform: translateZ(0);</code> 声明在桌面和手机端浏览器中都会触发 GPU 加速。看起来这是触发 GPU 加速的最有效的方式了（添加了所有浏览器前缀）：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-o-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Chrome 和 Safari 中使用 CSS transforms 时可能会有闪烁。下面这些声明可以解决这个问题：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-moz-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-ms-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">backface-visibility</span>: hidden;</span><br><span class="line"></span><br><span class="line">   <span class="hljs-attribute">-webkit-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-moz-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-ms-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种可以用在 Webkit 内核的桌面和手机浏览器中的方法是使用 <code>translate3d</code>：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">  <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原生的手机应用一直在利用 GPU 加速，这也就是为什么大家一直以来的印象都是原生应用要比网页应用更流畅一些。在手机上使用硬件加速来降低资源消耗是非常有必要的。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我们介绍的这些方法应该只用于需要动画的元素。这可以提高 2D 变换的性能，不过把这种方法用于所有元素绝不是一个好主意。</p>
+<p>谨慎使用这些方法，只有当你遇到性能瓶颈时才需要用它们。滥用 GPU 加速将导致严重的性能问题，因为硬件加速会占用大量内存 -- 而且还会影响电池续航。</p>
+<p>你在你的项目中用过这些方法吗？如果用过，请分享一下哪些方法最有效性能最好。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/02/08/Use-jquery-in-vue/" itemprop="url">「译」 如何在 Vue 中（安全的）使用 jQuery 插件</a>
         
     </h1>
@@ -119,13 +171,13 @@
         <span class="column is-narrow">
             
             
-            10 分钟 读完 (约 1474 字)
+            10 分钟 读完 (约 1478 字)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p><strong><em>作者：Anthony Gore</em></strong><br><strong><em>原文链接：<a href="https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/" target="_blank" rel="noopener">How To (Safely) Use A jQuery Plugin With Vue.js</a></em></strong></p>
+        <p><strong><em>作者：<a href="https://twitter.com/@anthonygore" target="_blank" rel="noopener">Anthony Gore</a> </em></strong><br><strong><em>原文链接：<a href="https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/" target="_blank" rel="noopener">How To (Safely) Use A jQuery Plugin With Vue.js</a></em></strong></p>
 <p>在一个 UI 中同时使用 Vue.js 和 jQuery 并不是一个好主意。如果可能的话要避免这种情形。</p>
 <p>不过既然你已经看到这里了，估计你是非要同时用 Vue 和 jQuery 不可了。或许是客户坚持要使用某个 jQuery 插件而你又没时间去把它用 Vue 重写。</p>
 <p>只要你谨慎的操作，还是可以同时使用 Vue 和 jQuery 的。这篇文章里我将演示如何在 Vue 项目中使用一个 jQuery UI 的 Datepicker 插件。</p>
