@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Windyard</title>
+<title>标签: Web Components - Windyard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,7 +14,7 @@
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Windyard">
-<meta property="og:url" content="http://windyard.com/index.html">
+<meta property="og:url" content="http://windyard.com/tags/Web-Components/index.html">
 <meta property="og:site_name" content="Windyard">
 <meta property="og:locale" content="zh-cn">
 <meta name="twitter:card" content="summary">
@@ -101,7 +101,14 @@
     </div>
 </nav>
 
-    <section class="section">
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#Web Components</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
     <div class="container">
     
         <article class="article content gallery" itemscope="" itemprop="blogPost">
@@ -229,220 +236,6 @@
 <h2 id="浏览器兼容性以及其他"><a href="#浏览器兼容性以及其他" class="headerlink" title="浏览器兼容性以及其他"></a>浏览器兼容性以及其他</h2><p>你可以看出，即使是为了支持一个最简单形式的单文件组件，也需要做非常多的工作。我们所展现的这个系统中的许多部分都是用脏 hack 实现的（用 Object URI 来加载 ES 模块？--什么鬼！）而且如果没有浏览器的原生支持，这项技术也没什么意义。更重要的是，在我写这篇文章的时候（2018 年 8 月）Firefox 并不支持 Custom Elements 和 dynamic import。坦白说这东西现在只在 Chrome 里好使。因此--目前来说--它只是为了满足一下好奇心，没什么实际用处。</p>
 <p>不过实现一个这样的东西还是很好玩的。它是一个涉及了许多浏览器开发和现代 web 标准相关内容的<em>与众不同</em>的小玩意儿。我希望至少能有一个人看完了这篇文章！</p>
 <p>当然了<a href="https://blog.comandeer.pl/assets/jednoplikowe-komponenty/" target="_blank" rel="noopener">整个作品可以在网上预览</a>。</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/03/26/css-hardware-accelerate/" itemprop="url">「译」使用 CSS 硬件加速提升网站性能</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-03-26T11:59:59.000Z" itemprop="datePublished">3月 26 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            6 分钟 读完 (约 932 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><strong><em> 作者： <a href="https://blog.teamtreehouse.com/author/guillermohernandez" target="_blank" rel="noopener">Guil Hernandez</a> </em></strong><br><strong><em> 原文链接：<a href="https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css" target="_blank" rel="noopener">Increase Your Site’s Performance with Hardware-Accelerated CSS</a> </em></strong></p>
-<p>你知道我们可以把图像相关的 CSS 特性交给 GPU(图像处理单元) 处理，以利用硬件加速在浏览器中获得更好的渲染性能吗？</p>
-<p>当今的大多数电脑都有可用于硬件加速的显卡。因此，我们可以利用这些 GPU 资源去处理那些比较耗性能的特性，这样我们的网站和应用在浏览器中就能获得比单纯用 CPU 处理更好的性能表现。</p>
-<p>这篇文章里，我们会讲到桌面和手机端浏览器的 CSS 硬件加速。</p>
-<h2 id="桌面和手机端浏览器中的-CSS-硬件加速"><a href="#桌面和手机端浏览器中的-CSS-硬件加速" class="headerlink" title="桌面和手机端浏览器中的 CSS 硬件加速"></a><strong>桌面和手机端浏览器</strong>中的 CSS 硬件加速</h2><p>你有没有想过为什么有些 CSS 动画在浏览器中看起来比其他的更流畅些？</p>
-<p>CSS animations, transforms 和 transitions 默认并不会启用 GPU 加速，而是被浏览器内部的（比较慢的）软件引擎渲染。那么到底是什么强制浏览器切换到 GPU 模式呢？许多浏览器通过一些特定的 CSS 规则启用 GPU 加速。</p>
-<p>当前，Chrome, Firefox, Safari, IE9+ 和最新版的 Opera 都支持硬件加速；它们只有在检测到某个 DOM 元素可能会从中获益的时候才会应用硬件加速。在 CSS 中，最显眼的迹象就是这个元素使用了 3D 变换。</p>
-<p>例如：</p>
-<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(250px,250px,250px)</span><br><span class="line">   <span class="hljs-built_in">rotate3d</span>(250px,250px,250px,-120deg)</span><br><span class="line">   <span class="hljs-built_in">scale3d</span>(0.5, 0.5, 0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>某些时候，你可能并不需要 3D 变换但仍然想利用硬件加速。这时候有几个非常顺手的 CSS 特性可以用来触发浏览器的 GPU 加速。</p>
-<p>尽管我们的元素并不是在 3D 空间中做动画，我们仍然可以启用 3D 渲染。闲话休提，<code>transform: translateZ(0);</code> 声明在桌面和手机端浏览器中都会触发 GPU 加速。看起来这是触发 GPU 加速的最有效的方式了（添加了所有浏览器前缀）：</p>
-<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">-o-transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateZ</span>(0);</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 Chrome 和 Safari 中使用 CSS transforms 时可能会有闪烁。下面这些声明可以解决这个问题：</p>
-<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-moz-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-ms-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">backface-visibility</span>: hidden;</span><br><span class="line"></span><br><span class="line">   <span class="hljs-attribute">-webkit-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-moz-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-ms-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另一种可以用在 Webkit 内核的桌面和手机浏览器中的方法是使用 <code>translate3d</code>：</p>
-<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">  <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原生的手机应用一直在利用 GPU 加速，这也就是为什么大家一直以来的印象都是原生应用要比网页应用更流畅一些。在手机上使用硬件加速来降低资源消耗是非常有必要的。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我们介绍的这些方法应该只用于需要动画的元素。这可以提高 2D 变换的性能，不过把这种方法用于所有元素绝不是一个好主意。</p>
-<p>谨慎使用这些方法，只有当你遇到性能瓶颈时才需要用它们。滥用 GPU 加速将导致严重的性能问题，因为硬件加速会占用大量内存 -- 而且还会影响电池续航。</p>
-<p>你在你的项目中用过这些方法吗？如果用过，请分享一下哪些方法最有效性能最好。</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/02/08/Use-jquery-in-vue/" itemprop="url">「译」 如何在 Vue 中（安全的）使用 jQuery 插件</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-02-08T01:17:40.000Z" itemprop="datePublished">2月 8 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            10 分钟 读完 (约 1478 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><strong><em>作者：<a href="https://twitter.com/@anthonygore" target="_blank" rel="noopener">Anthony Gore</a> </em></strong><br><strong><em>原文链接：<a href="https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/" target="_blank" rel="noopener">How To (Safely) Use A jQuery Plugin With Vue.js</a></em></strong></p>
-<p>在一个 UI 中同时使用 Vue.js 和 jQuery 并不是一个好主意。如果可能的话要避免这种情形。</p>
-<p>不过既然你已经看到这里了，估计你是非要同时用 Vue 和 jQuery 不可了。或许是客户坚持要使用某个 jQuery 插件而你又没时间去把它用 Vue 重写。</p>
-<p>只要你谨慎的操作，还是可以同时使用 Vue 和 jQuery 的。这篇文章里我将演示如何在 Vue 项目中使用一个 jQuery UI 的 Datepicker 插件。</p>
-<p>而且为了小小的炫一下技，我还要在 jQuery 插件和 Vue 之间传递数据！</p>
-<p>点击这里查看示例代码 <a href="https://jsbin.com/bepikonube/2/edit?html,js,output" target="_blank" rel="noopener">JS Bin</a></p>
-<p><img src="/pictures/1-jq-in-vue/jquery_plugin_1.png" alt="jquery ui datepicker"></p>
-<p><em>jQuery UI Datepicker</em></p>
-<h2 id="同时使用-jQuery-和-Vue-存在的问题"><a href="#同时使用-jQuery-和-Vue-存在的问题" class="headerlink" title="同时使用 jQuery 和 Vue 存在的问题"></a>同时使用 jQuery 和 Vue 存在的问题</h2><p>为什么说这种用法会有潜在的风险呢？</p>
-<p>可以说 Vue 是一个占有欲非常强的框架，她总想完全控制你交给她的这部分 DOM 元素（传递给 el 属性的元素）。如果 jQuery 修改了 Vue 管辖下的元素，例如为某个元素添加了一个 class， Vue 无法感知到这次修改，所以下次 Vue 更新 DOM 时会直接覆盖 jQuery 所做的修改。</p>
-<h2 id="解决方案：把-jQuery-插件包装成-Vue-组件"><a href="#解决方案：把-jQuery-插件包装成-Vue-组件" class="headerlink" title="解决方案：把 jQuery 插件包装成 Vue 组件"></a>解决方案：把 jQuery 插件包装成 Vue 组件</h2><p>既然 Vue 和 jQuery 绝不会分享同一份 DOM，我们必须让 Vue 分割出一块区域交给 jQuery。</p>
-<p>看起来把 jQuery 插件包装成 Vue 组件是个办法，因为：</p>
-<ul>
-<li>我们可以利用 Vue 生命周期勾子来设置或卸载 jQuery 代码</li>
-<li>我们可以通过组件接口使用 props 和 events 来与 Vue 应用通信</li>
-<li>组件可以通过设置 <code>v-once</code> 避免被 Vue 更新</li>
-</ul>
-<h2 id="设置-jQuery-UI-Datepicker"><a href="#设置-jQuery-UI-Datepicker" class="headerlink" title="设置 jQuery UI Datepicker"></a>设置 jQuery UI Datepicker</h2><p>首先要做的当然是在你的项目中引入 jQuery UI 插件。然后你只需要把 datepicker 插件绑定到一个 <code>input</code> 元素上：</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"datepicker"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>选中并初始化 Datepicker</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'#datepicker'</span>).datepicker();</span><br></pre></td></tr></table></figure>
-<h2 id="Datepicker-组件"><a href="#Datepicker-组件" class="headerlink" title="Datepicker 组件"></a>Datepicker 组件</h2><p>我们的 datepicker 组件很简单，template 只有一个 <code>input</code> 元素：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="hljs-string">'date-picker'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  template: <span class="hljs-string">'&lt;input/&gt;'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  Date: <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：组件只是为 jQuery 插件提供一个包装。不要试图为组件元素添加任何 data 属性或 Vue directives 或 slots。</p>
-</blockquote>
-<h2 id="插件实例化"><a href="#插件实例化" class="headerlink" title="插件实例化"></a>插件实例化</h2><p>在这里我们将使用 <code>this.$el</code> 而不是 <code>input</code> 元素的 ID 来选择插件元素，每个 Vue 组件都可以像这样来访问到自己的根元素。我们这里的根元素就是 <code>input</code>。</p>
-<p>然后我们可以把这个元素引用传递给 jQuery 选择器并调用 <code>datepicker</code> 方法。例：<code>$(this.$el).datepicker()</code>。</p>
-<p>注意我们的代码是写在在 Vue 组件生命周期的 <code>mounted</code> 阶段，因为在此之前 <code>this.$el</code> 还是 undefined 状态。</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="hljs-string">'date-picker'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  template: <span class="hljs-string">'&lt;input/&gt;'</span>,</span><br><span class="line">  mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>.$el).datepicker();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p>类似的，卸载 datepicker 插件同样也会用到生命周期勾子。注意我们必须在 <code>beforeDestroy</code> 阶段执行卸载，因为在这个阶段 <code>input</code> 元素仍然存在于 DOM 中，我们才能选中它（在 <code>destroy</code> 阶段它将变成 undefined）。</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="hljs-string">'date-picker'</span>, &#123;</span><br><span class="line">  template: <span class="hljs-string">'&lt;input/&gt;'</span>,</span><br><span class="line">  mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>.$el).datepicker();</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>.$el).datepicker(<span class="hljs-string">'hide'</span>).datepicker(<span class="hljs-string">'destroy'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="通过-props-传递参数"><a href="#通过-props-传递参数" class="headerlink" title="通过 props 传递参数"></a>通过 props 传递参数</h2><p>为了使我们的组件可复用，最好让它能接受自定义设置参数，例如通过设置属性 <code>dateFormat</code> 来制定日期格式。通过 <code>props</code> 可以实现这一目标：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="hljs-string">'date-picker'</span>, &#123;</span><br><span class="line">  template: <span class="hljs-string">'&lt;input/&gt;'</span>,</span><br><span class="line">  props: [ <span class="hljs-string">'dateFormat'</span> ],</span><br><span class="line">  mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>.$el).datepicker(&#123;</span><br><span class="line">      dateFormat: <span class="hljs-keyword">this</span>.dateFormat</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span> <span class="hljs-attr">date-format</span>=<span class="hljs-string">"yy-mm-dd"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="让-jQuery-接收更新"><a href="#让-jQuery-接收更新" class="headerlink" title="让 jQuery 接收更新"></a>让 jQuery 接收更新</h2><p>比方说你不满足于只是传给 <code>dateFormat</code> prop 一个字符串，而是把 <code>dateFormat</code> 设置成 Vue 根实例上的一个属性，例：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    ...</span><br><span class="line">    dateFormat: <span class="hljs-string">'yy-mm-dd'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span> <span class="hljs-attr">date-format</span>=<span class="hljs-string">"dateFormat"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样一来，<code>dateFormat</code> 就变成了一个响应式的 data 属性。你可以随时在应用中更改它的值：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 更改日期显示格式</span></span><br><span class="line">vm.dateFormat = <span class="hljs-string">'yy-dd-mm'</span>;</span><br></pre></td></tr></table></figure>
-<p>由于 <code>dateFormat</code> prop 是 datepicker 组件的 <code>mounted</code> 钩子的依赖项，更新它的值将导致组件重新渲染。这就不妙了。因为 jQuery 已经在 <code>input</code> 元素上设置好了 datepicker 并且添加了自己的 class 和 事件监听。组件重新渲染将导致 <code>input</code> 元素被替换而且 jQuery 所做的设置也被重置了。</p>
-<p>我们需要将组件设置为接收数据不重新渲染…</p>
-<h2 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a>v-once</h2><p><code>v-once</code> 指令用于缓存一个包含大量静态内容的组件。导致的结果就是这个组件渲染不会受数据更新的影响。</p>
-<p>我们的组件正好用到这个特性，因为它有效的避免了被 Vue 重新渲染。因此我们有理由相信 jQuery 将可以在应用的生命周期中无障碍的操作这个 <code>input</code> 元素。</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span> <span class="hljs-attr">date-format</span>=<span class="hljs-string">"yy-mm-dd"</span> <span class="hljs-attr">v-once</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="从-jQuery-向-Vue-传递数据"><a href="#从-jQuery-向-Vue-传递数据" class="headerlink" title="从 jQuery 向 Vue 传递数据"></a>从 jQuery 向 Vue 传递数据</h2><p>如果我们不能在 app 中获取到 datepicker 选中的日期，那它就没啥用了。让我们来实现这个目标。</p>
-<p>首先给 root 实例一个 <code>date</code> 属性：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    date: <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span> <span class="hljs-attr">date-format</span>=<span class="hljs-string">"yy-mm-dd"</span> <span class="hljs-attr">v-once</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; date &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>datepicker 插件有一个 <code>onSelect</code> 回调函数来处理选中日期的操作。通过它我们可以在组件中使用自定义事件发出数据。</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;</span><br><span class="line">  $(<span class="hljs-keyword">this</span>.$el).datepicker(&#123;</span><br><span class="line">    dateFormat: <span class="hljs-keyword">this</span>.dateFormat,</span><br><span class="line">    onSelect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">date</span>) </span>&#123;</span><br><span class="line">      self.$emit(<span class="hljs-string">'update-date'</span>, date);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在根实例上监听自定义事件并接收新数据：</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">date-picker</span> @<span class="hljs-attr">update-date</span>=<span class="hljs-string">"updateDate"</span> <span class="hljs-attr">date-format</span>=<span class="hljs-string">"yy-mm-dd"</span> <span class="hljs-attr">v-once</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date-picker</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; date &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    date: <span class="hljs-literal">null</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateDate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">date</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>感谢<a href="http://stackoverflow.com/a/40350880/2278963" target="_blank" rel="noopener">这个 Stack Overflow 回答</a> 提供的灵感</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/02/07/Testing-post/" itemprop="url">Testing post</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-02-07T13:24:51.000Z" itemprop="datePublished">2月 7 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            几秒 读完 (约 9 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>This is a testing post.<br>Created at February 7th, 2019, 21:26</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope="" itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/02/02/hello-world/" itemprop="url">Hello World 2</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-02-02T05:01:50.045Z" itemprop="datePublished">2月 2 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            1 分钟 读完 (约 121 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
     
     </div>
