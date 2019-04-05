@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>归档: 2019/3 - Windyard</title>
+<title>「译」Web Components：入门到精通 (1) - Windyard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css"> -->
@@ -12,16 +12,25 @@
 
 
 
+<link rel="canonical" href="https://dev.to/thepassle/web-components-from-zero-to-hero-4n4m">
+<link rel="alternate" hreflang="en-us" href="https://dev.to/thepassle/web-components-from-zero-to-hero-4n4m">
+<link rel="alternate" hreflang="zh-Hans" href="https://windyard.com/2019/04/01/web-components-hero-1/index.html">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Windyard">
-<meta property="og:url" content="https://windyard.com/archives/2019/03/index.html">
+
+    <meta name="description" content="作者：Pascal Schilp原文链接：Web Components: from zero to hero 一个编写原生 Web Components 的教程 什么是 Web Components？ 组件生命周期 编写我们的 to-do 应用 设置 properties 设置 attributes 将 properties 映射到 attributes 事件 浏览器支持以及 polyfill 包">
+<meta name="keywords" content="JavaScript,Web Components">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」Web Components：入门到精通 (1)">
+<meta property="og:url" content="https://windyard.com/2019/04/01/web-components-hero-1/index.html">
 <meta property="og:site_name" content="Windyard">
+<meta property="og:description" content="作者：Pascal Schilp原文链接：Web Components: from zero to hero 一个编写原生 Web Components 的教程 什么是 Web Components？ 组件生命周期 编写我们的 to-do 应用 设置 properties 设置 attributes 将 properties 映射到 attributes 事件 浏览器支持以及 polyfill 包">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-04-05T08:07:33.276Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windyard">
+<meta name="twitter:title" content="「译」Web Components：入门到精通 (1)">
+<meta name="twitter:description" content="作者：Pascal Schilp原文链接：Web Components: from zero to hero 一个编写原生 Web Components 的教程 什么是 Web Components？ 组件生命周期 编写我们的 to-do 应用 设置 properties 设置 attributes 将 properties 映射到 attributes 事件 浏览器支持以及 polyfill 包">
 
 
 
@@ -104,34 +113,92 @@
 
     <section class="section">
     <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            「译」Web Components：入门到精通 (1)
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-01T13:07:24.000Z" itemprop="datePublished">4月 1 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 283 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong><em>作者：<a href="https://dev.to/thepassle" target="_blank" rel="noopener">Pascal Schilp</a></em></strong><br><strong><em>原文链接：<a href="https://dev.to/thepassle/web-components-from-zero-to-hero-4n4m" target="_blank" rel="noopener">Web Components: from zero to hero</a></em></strong></p>
+<h2 id="一个编写原生-Web-Components-的教程"><a href="#一个编写原生-Web-Components-的教程" class="headerlink" title="一个编写原生 Web Components 的教程"></a>一个编写原生 Web Components 的教程</h2><ul>
+<li><a href="#-what-are-web-components">什么是 Web Components？</a></li>
+<li><a href="#-a-components-lifecycle">组件生命周期</a></li>
+<li><a href="#-building-our-to-do-app">编写我们的 to-do 应用</a></li>
+<li><a href="#-setting-properties">设置 properties</a></li>
+<li><a href="#-reflecting-properties-to-attributes">设置 attributes</a></li>
+<li><a href="">将 properties 映射到 attributes</a></li>
+<li><a href="#-events">事件</a></li>
+<li><a href="#-browser-support-and-polyfills">浏览器支持以及 polyfill</a></li>
+<li><a href="#wrapping-up">包装</a></li>
+</ul>
+<p>Web Components 现在有了越来越大的推动力。随着 Edge 团队宣布部署 Custom Elements 和 Shadow DOM，所有的主流浏览器都已经原生支持 Web Components。像 Github，Netflix，Youtube 和 ING 等甚至已经在生产环境中使用了 Web Components！赞！不过，很让人惊讶的是，这些成功的大公司中没有一个做过 to-do 应用！</p>
+<p>因此，今天我们要做一个 to-do 应用，因为世界上还没几个 to-do 应用。你可以在<a href="https://thepassle.github.io/webcomponents-from-zero-to-hero/" target="_blank" rel="noopener">这里</a>先预览一下我们要做的东西。</p>
+<p>在开始之前，</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Web-Components/">#Web Components</a></span>
+    
+    </div>
     
     
-        <div class="archive content">
-            <h4 class="title is-4" id="2019">2019</h4>
-            <div class="articles">
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-03-31T04:28:59.000Z" itemprop="datePublished">
-                        3月 31</time>
-                    <h6 class="title is-6"><a href="/2019/03/31/sw-in-5m/">「译」5 分钟上手 Service Worker</a></h6>
-                </div>
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-03-27T15:02:12.000Z" itemprop="datePublished">
-                        3月 27</time>
-                    <h6 class="title is-6"><a href="/2019/03/27/single-file-web-components/">「译」动手实现一个单文件 Web Components</a></h6>
-                </div>
+            <a href="/2019/03/31/sw-in-5m/">「译」5 分钟上手 Service Worker</a>
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-03-26T11:59:59.000Z" itemprop="datePublished">
-                        3月 26</time>
-                    <h6 class="title is-6"><a href="/2019/03/26/css-hardware-accelerate/">「译」使用 CSS 硬件加速提升网站性能</a></h6>
-                </div>
-            
-            </div>
-        </div>
+        </span>
+    </div>
     
+</article>
+
+
+<div class="sharebox">
     
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">评论</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
     </div>
 </section>
     <footer class="footer">
