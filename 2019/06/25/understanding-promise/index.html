@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>「译」理解 JavaScript 中的 Promise - Windyard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css"> -->
+
+<link rel="icon" href="/favicon.jpg">
+
+
+
+
+<link rel="canonical" href="https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1">
+<link rel="alternate" hreflang="en-us" href="https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1">
+<link rel="alternate" hreflang="zh-Hans" href="https://windyard.com/2019/06/25/understanding-promise/index.html">
+
+
+
+
+    <meta name="description" content="作者：Gokul N K 原文链接：Understanding promises in JavaScript 我对 JavaScript 的感觉是“又爱又恨”。但是它还是一直吸引着我。我做了 10 年的 Java 和 PHP 开发，相较之下，JavaScript 是一个非常独特而有趣的存在。现在我正努力花时间来了解更多的 JavaScript 内容。 我遇到的第一个有意思的主题就是 Promise">
+<meta name="keywords" content="JavaScript,Promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」理解 JavaScript 中的 Promise">
+<meta property="og:url" content="https://windyard.com/2019/06/25/understanding-promise/index.html">
+<meta property="og:site_name" content="Windyard">
+<meta property="og:description" content="作者：Gokul N K 原文链接：Understanding promises in JavaScript 我对 JavaScript 的感觉是“又爱又恨”。但是它还是一直吸引着我。我做了 10 年的 Java 和 PHP 开发，相较之下，JavaScript 是一个非常独特而有趣的存在。现在我正努力花时间来了解更多的 JavaScript 内容。 我遇到的第一个有意思的主题就是 Promise">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/tweet.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/2016.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise1.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise2.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise3.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise4.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise5.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise6.png">
+<meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise7.png">
+<meta property="og:updated_time" content="2019-07-10T13:57:45.356Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「译」理解 JavaScript 中的 Promise">
+<meta name="twitter:description" content="作者：Gokul N K 原文链接：Understanding promises in JavaScript 我对 JavaScript 的感觉是“又爱又恨”。但是它还是一直吸引着我。我做了 10 年的 Java 和 PHP 开发，相较之下，JavaScript 是一个非常独特而有趣的存在。现在我正努力花时间来了解更多的 JavaScript 内容。 我遇到的第一个有意思的主题就是 Promise">
+<meta name="twitter:image" content="https://windyard.com/pictures/understanding-promise/tweet.png">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            「译」理解 JavaScript 中的 Promise
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-06-25T13:51:56.000Z" itemprop="datePublished">6月 25 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            17 分钟 读完 (约 2590 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong><em>作者：<a href="https://hackernoon.com/@gokulnk" target="_blank" rel="noopener">Gokul N K</a> </em></strong><br><strong><em>原文链接：<a href="https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1" target="_blank" rel="noopener">Understanding promises in JavaScript</a></em></strong></p>
+<p>我对 JavaScript 的感觉是“又爱又恨”。但是它还是一直吸引着我。我做了 10 年的 Java 和 PHP 开发，相较之下，JavaScript 是一个非常独特而有趣的存在。现在我正努力花时间来了解更多的 JavaScript 内容。</p>
+<p>我遇到的第一个有意思的主题就是 Promise。曾经不止一次的听人们说起 Promise 把他们从回调地狱中拯救出来。而这只不过是 Promise 顺带的一点好处而已，Promise 包含了更多的内容，直到现在我才把它搞清楚。这是一篇长文，如果你想做些高亮标记什么的，你可以试试我们这个扩展 <a href="http://bit.ly/highlights-extension" target="_blank" rel="noopener">http://bit.ly/highlights-extension</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>第一次使用 JavaScript 的时候你可能会觉得很受挫。你可能会听到一些人说 JavaScript 是同步编程语言而另一些人则说它是异步的。你会听到诸如阻塞代码、非阻塞代码、事件驱动设计模式、事件生命周期、函数栈、事件队列、冒泡、polyfill、babel、angular、reactJS、VueJS 以及一大堆的工具和库。别担心，你不是第一个感觉头昏脑胀的人。有一个专门的名词，叫做 <strong>JavaScript Fatigue（JS 疲乏）</strong>。这条推特总结的很到位。</p>
+<p><img src="/pictures/understanding-promise/tweet.png" alt="JS 疲乏指的是人们用他们不需要的工具去解决不存在的问题"></p>
+<p>如果你想了解关于 JS 疲乏的更多细节，可以阅读下面这篇文章。这篇文章能在 Hackernoon 上获得 42000 次鼓掌不是没有原因的 :)</p>
+<p><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f" target="_blank" rel="noopener"><img src="/pictures/understanding-promise/2016.png" alt="在 2016 年学习 JavaScript 的感受"></a></p>
+<p>JavaScript 是一个同步型的编程语言。不过借助于回调函数，我们可以让它像异步编程语言一样执行。</p>
+<h2 id="让门外汉理解-Promise"><a href="#让门外汉理解-Promise" class="headerlink" title="让门外汉理解 Promise"></a>让门外汉理解 Promise</h2><p>JavaScript 中的 Promise 跟现实生活中的 Promise 非常像。因此我们先来看一看现实生活中的承诺（Promise）是怎样的。</p>
+<p>字典中是这样描述 Promise 的：</p>
+<p><strong>Promise</strong>： 名词：某人保证会做某事或则某件事一定会发生。</p>
+<p>那么当别人对你做了承诺（Promise）会发生什么呢？</p>
+<ol>
+<li>Promise 是对某事一定会发生的保证。不论是（作出保证）的这个人亲自去做还是交由第三方去完成。然后你就可以在这个保证的基础上做下一步的计划。</li>
+<li>Promise 会被实现或是没能实现。</li>
+<li>当 Promise 实现时，会带回来某种结果。这个结果可被用于下一步的行动。</li>
+<li>如果一个 Promise 未能成功实现，你会希望了解为何这个做出承诺的人未能履行他的诺言。一旦你了解并确认了 Promise 执行失败的原因，你就可以计划接下来如何处理它了。</li>
+<li>在做出 Promise 的时候，我们得到的只是一个保证。除此之外我们暂时什么都做不了。不过我们可以先计划一下当 Promise <strong>被实现以后</strong>（得到了我们预期的结果）或是 <strong>未能实现</strong>（了解失败原因并制定应急预案）时要做什么。</li>
+<li>不过也有可能这个人在跟你做完 Promise 以后就杳无音讯了。这时候你需要设置一个时间节点。比如说如果这个做出承诺的人在 10 天之内没有回来我将假设他遇上了什么意外无法完成承诺了。因此即使这个人在 15 天之后才回来也没什么大不了，因为你已经制定了备用方案。</li>
+</ol>
+<h2 id="JavaScript-中的-Promise"><a href="#JavaScript-中的-Promise" class="headerlink" title="JavaScript 中的 Promise"></a>JavaScript 中的 Promise</h2><p>根据经验，我总是从 MDN Web Docs 阅读 JavaScript 的文档。我认为它最为精准权威。我通过阅读 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">MDN Web Docs 上的 Promise 相关页面</a> 以及写代码实践来掌握它。</p>
+<p>理解 Promise 分为两部分。<strong>创建 Promise</strong> 和 <strong>处理 Promise</strong>。尽管大多数情况下我们都是在写代码处理其他库产生的 Promise，全面的去了解 Promise 还是会很有帮助的。当你迈过初学者阶段以后你会发现了解“Promise 的创建”也是很重要的。</p>
+<h2 id="创建-Promise"><a href="#创建-Promise" class="headerlink" title="创建 Promise"></a>创建 Promise</h2><p>我们来看一下创建 Promise 的代码格式。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(</span><br><span class="line">    <span class="hljs-comment">/* 执行者 */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123; ... &#125; </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>构造函数接受一个名为执行者（executor）的函数作为参数。<code>executor</code> 函数依次接受两个函数参数：<code>resolve</code> 和 <code>reject</code>。Promise 通常被用来简化异步操作或阻塞性代码的执行，这种操作一般出现在文件操作、API 调用、数据库调用、IO 调用等情景中。这些异步操作的初始化在 <code>executor</code> 函数中完成。如果异步操作成功完成，Promise 的创建者会调用 <code>resolve</code> 函数来返回操作结果。类似的，若因为发生了错误无法完成操作，失败原因会通过调用 <code>reject</code> 函数返回。</p>
+<p>现在我们已经学会如何创建 Promise 了。我们来创建一个简单的 Promise 来帮助加深理解。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> keepsHisWord;</span><br><span class="line">keepsHisWord = <span class="hljs-literal">true</span>;</span><br><span class="line">promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (keepsHisWord) &#123;</span><br><span class="line">    resolve(<span class="hljs-string">"The man likes to keep his word"</span>);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    reject(<span class="hljs-string">"The man doesnt want to keep his word"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(promise1);</span><br></pre></td></tr></table></figure>
+<p><img src="/pictures/understanding-promise/promise1.png" alt="每个 Promise 都有 state 和 value 两个属性"></p>
+<p>由于这个 Promise 在创建后立刻就被解决了（resolved），我们无法检测它的初始状态。所以我们再创建一个需要等待一段时间才会被 resolved 的 Promise。最简单的办法就是用 <code>setTimeout</code> 函数。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    resolve(&#123;</span><br><span class="line">      message: <span class="hljs-string">"The man likes to keep his word"</span>,</span><br><span class="line">      code: <span class="hljs-string">"aManKeepsHisWord"</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, <span class="hljs-number">10</span> * <span class="hljs-number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(promise2);</span><br></pre></td></tr></table></figure>
+<p>上面的代码创建了一个会在 10 秒钟后 resolve 的 Promise。因此我们可以在它 resolve 之前查看 Promise 状态。</p>
+<p><img src="/pictures/understanding-promise/promise2.png" alt="Promise 被 resolve 或 reject 之前的状态"></p>
+<p>10 秒种后 Promise 被 resolve。<code>PromiseStatus</code> 和 <code>PromiseValue</code> 也随之被更新。如你所见，我们修改了 resolve 函数以便传给它一个 JSON 对象而不仅仅是简单的文本。这是为了展现出我们可以向 <code>resovle</code> 函数传递不同的值。</p>
+<p><img src="/pictures/understanding-promise/promise3.png" alt="10 秒后才会 resovle 的 Promise，它返回一个 JSON 对象promise"></p>
+<p>现在我们来看一下被驳回（reject）的 Promise。我们对 Promise 1 做一点小小的修改。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">keepsHisWord = <span class="hljs-literal">false</span>;</span><br><span class="line">promise3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (keepsHisWord) &#123;</span><br><span class="line">    resolve(<span class="hljs-string">"The man likes to keep his word"</span>);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    reject(<span class="hljs-string">"The man doesn't want to keep his word"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(promise3);</span><br></pre></td></tr></table></figure>
+<p>由于我们创建了一个未处理的 rejection，Chrome 浏览器会显示一个错误。目前你可以先把它忽略，我们后面会处理这个错误。</p>
+<p><img src="/pictures/understanding-promise/promise4.png" alt="Promise 中的 rejection"></p>
+<p>我们看到，<code>PromiseStatus</code> 可以有不同的值：<code>pending</code>、<code>resolved</code> 或 <code>rejected</code>。在 Promise 创建时，<code>PromiseStatus</code> 处于 <code>pending</code> 状态，并且 <code>PromiseValue</code> 的值在 Promise 被 <code>resolved</code> 或 <code>rejected</code> 之前一直都是 <code>undefined</code>。当一个 Promise 处于 <code>resolved</code> 或 <code>rejected</code> 状态时，我们称这个 Promise 被解决了（<code>settled</code>）。所以通常来说，Promise 会从 pending 状态变成 settled 状态。</p>
+<p>现在我们知道 Promise 是如何创建的了，我们可以看一下如何处理 Promise。这儿会手把手的教你理解 <code>Promise</code> 对象。</p>
+<h2 id="理解-Promise-对象"><a href="#理解-Promise-对象" class="headerlink" title="理解 Promise 对象"></a>理解 Promise 对象</h2><p>据 MDN 文档</p>
+<p><code>Promise</code> 对象代表一个最终会实现（或失败）的异步操作，以及这个操作的返回值。</p>
+<p><code>Promise</code> 对象拥有静态方法以及 <code>原型方法</code>。Promise对象中的静态方法可以独立应用，而原型方法需要应用于Promise对象的实例。记住普通方法和原型方法都是返回一个 <code>Promise</code> 会对你的学习有所帮助。</p>
+<h2 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h2><p>我们先从三个原型方法开始。重申一下，所有这些方法都可以用于 <code>Promise</code> 对象的实例而且所有这些方法都会依次返回一个 Promise。前面我们已经看到，<code>Promise</code> 在刚创建时是处于 <code>pending</code> 状态。在 Promise 被解决（settled）以后，根据它的状态是 <code>fulfilled</code> 或 <code>rejected</code>，下面的某一个方法会被执行。</p>
+<p><code>Promise.prototype.catch(onRejected)</code></p>
+<p><code>Promise.prototype.then(onFulfilled, onRejected)</code></p>
+<p><code>Promise.prototype.finally(onFinally)</code></p>
+<p>下面的图片展示了 <code>then</code> 和 <code>catch</code> 方法的流程。图片中也显示了由于这些方法返回的是一个 <code>Promise</code> 因此可以被继续链下去。当在 Promise 上应用了 <code>.finally</code> 时，无论这个 Promise 的解决状态是 fulfilled 还是 rejected，它都会执行。</p>
+<p><a href="https://medium.com/@konrud5" target="_blank" rel="noopener">Konstantin Rouda</a> 指出 finally 得到的支持非常有限，因此在使用它时请无比做好检测。</p>
+<p><img src="/pictures/understanding-promise/promise5.png" alt=""><br><em>来源：<a href="https://mdn.mozillademos.org/files/15911/promises.png" target="_blank" rel="noopener">https://mdn.mozillademos.org/files/15911/promises.png</a></em></p>
+<p>讲个小故事。你是一个上学的孩子，正在跟你妈要一部手机。她说：“月底前我就给你买一部。”</p>
+<p>我们来看一下如何用 JavaScript 来描述这个诺言在月底前被执行。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> momsPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  momsSavings = <span class="hljs-number">20000</span>;</span><br><span class="line">  priceOfPhone = <span class="hljs-number">60000</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span> (momsSavings &gt; priceOfPhone) &#123;</span><br><span class="line">    resolve(&#123;</span><br><span class="line">      brand: <span class="hljs-string">"iphone"</span>,</span><br><span class="line">      model: <span class="hljs-string">"6s"</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    reject(<span class="hljs-string">"We donot have enough savings. Let us save some more money."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">momsPromise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hurray I got this phone as a gift "</span>, <span class="hljs-built_in">JSON</span>.stringify(value));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">momsPromise.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reason</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Mom coudn't buy me the phone because "</span>, reason);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">momsPromise.finally(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(</span><br><span class="line">    <span class="hljs-string">"Irrespecitve of whether my mom can buy me a phone or not, I still love her"</span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<p><img src="/pictures/understanding-promise/promise6.png" alt="moms未实现的承诺"></p>
+<p>如果我们把 <code>momsSavings</code> 的值设置为 200000，那么妈妈就有足够的钱给儿子买礼物了。这时输出如下：</p>
+<p><img src="/pictures/understanding-promise/promise7.png" alt="moms实现了她的承诺"></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Promise/">#Promise</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/05/27/super-extends-js/">「译」深度理解 JavaScript ES6 中的 “Super” 和 “Extends”</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">评论</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 w.z&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<!-- <div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script> -->
+<!-- <script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script> -->
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
