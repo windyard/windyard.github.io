@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise11.png">
 <meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise12.png">
 <meta property="og:image" content="https://windyard.com/pictures/understanding-promise/promise13.png">
-<meta property="og:updated_time" content="2019-07-20T07:51:31.085Z">
+<meta property="og:updated_time" content="2019-07-24T15:25:29.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「译」理解 JavaScript 中的 Promise">
 <meta name="twitter:description" content="作者：Gokul N K 原文链接：Understanding promises in JavaScript 我对 JavaScript 的感觉是“又爱又恨”。但是它还是一直吸引着我。我做了 10 年的 Java 和 PHP 开发，相较之下，JavaScript 是一个非常独特而有趣的存在。现在我正努力花时间来了解更多的 JavaScript 内容。 我遇到的第一个有意思的主题就是 Promise">
@@ -53,7 +53,6 @@
 
 
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
 
@@ -268,7 +267,7 @@
 <p>我还会写几篇关于我学习 async 和 await 的文章。</p>
 <p>在结束前我想列一下我学习 Promise 期间帮助我保持头脑清醒的要点。</p>
 <h2 id="使用-Promise-的要点"><a href="#使用-Promise-的要点" class="headerlink" title="使用 Promise 的要点"></a>使用 Promise 的要点</h2><ol>
-<li>当你想用 async 或阻塞型代码时请用 Promise 代替。</li>
+<li>当你想用异步或阻塞型代码时请使用 Promise。</li>
 <li>在实践中将 <code>resoleve</code> 对应 <code>then</code>，<code>reject</code> 对应 <code>catch</code>。</li>
 <li>确保为所有的 Promise 都写上 <code>.catch</code> 和 <code>.then</code>。</li>
 <li>如果某个操作无论如何都要执行请使用 <code>.finally</code></li>
@@ -294,7 +293,9 @@
     
     
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/09/6-reasons-async-await/">「译」7 个用 Async/Await 取代 Promise 的理由（教程）</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
@@ -336,7 +337,7 @@
     <div class="container">
         <div class="columns content">
             <div class="column is-narrow has-text-centered">
-                &copy; 2019 w.z&nbsp;
+                &copy; 2020 w.z&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
             <div class="column is-hidden-mobile"></div>

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windyard.com/2019/09/09/6-reasons-async-await/</loc>
+    
+    <lastmod>2019-09-08T17:26:37.041Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://windyard.com/2019/06/25/understanding-promise/</loc>
     
-    <lastmod>2019-07-20T07:51:31.085Z</lastmod>
+    <lastmod>2019-07-24T15:25:29.260Z</lastmod>
     
   </url>
   
