@@ -414,6 +414,21 @@ figure.highlight {
     font-family: inherit !important;
     line-height: 1.5; }
 
+.server-recommand {
+  border-top: 1px solid #dbdbdb;
+  color: #888888;
+  font-size: 12px;
+  margin-top: 3rem;
+  padding-top: 2rem; }
+  .server-recommand a {
+    background-color: #233aa1;
+    display: block;
+    padding: 2px 0; }
+  .server-recommand img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; }
+
 .ins-section-container {
   position: relative;
   background: #f7f7f7; }
