@@ -31,9 +31,6 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
 
@@ -89,13 +86,6 @@
             </a>
             
             
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
             
         </div>
     </div>
@@ -246,6 +236,10 @@
 
 
 
+
+
+
+
     
     
     </div>
@@ -264,9 +258,9 @@
                 <div class="columns is-mobile is-multiline is-centered">
                 
                     
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/">
                     
-                    GitHub
+                    Firefox
                     
                 </a>
                 
@@ -321,78 +315,8 @@
     
     
     
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-      })
-    </script>
-
     
     
 
@@ -432,7 +356,11 @@
 <script src="/js/insight.js"></script>
     
 </body>
-</html>unction"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will run as it is a resovled promise. The resolved value is "</span>, value);</span><br><span class="line">&#125;);</span><br><span class="line">promise4.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will also run as multiple handlers can be added. Printing twice the resolved value which is "</span>, value * <span class="hljs-number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise4.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reason</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will not run as it is a resolved promise"</span>, reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</html>Promise.resolve(value)</code></p>
+<p>帮助你创建一个执行成功（resolved）状态的 Promise。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> promise4 = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);</span><br><span class="line">promise4.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will run as it is a resovled promise. The resolved value is "</span>, value);</span><br><span class="line">&#125;);</span><br><span class="line">promise4.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reason</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will not run as it is a resolved promise"</span>, reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>顺带说一下，一个 Promise 可以有多个处理函数。所以上面的代码还可以这样写：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> promise4 = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);</span><br><span class="line">promise4.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will run as it is a resovled promise. The resolved value is "</span>, value);</span><br><span class="line">&#125;);</span><br><span class="line">promise4.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will also run as multiple handlers can be added. Printing twice the resolved value which is "</span>, value * <span class="hljs-number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise4.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reason</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This will not run as it is a resolved promise"</span>, reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>输出结果为：</p>
 <p><img src="/pictures/understanding-promise/promise8.png" alt=""></p>
 <p>接下来的两个方法可以帮助你处理多个 Promise。当你要处理多个 Promise 时，最好是先创建一个 Promise 的数组，然后对这个数组采取相应的操作。这次我们不能用 <code>promiseTRRARNOSG</code> 这个函数做例子了，因为它太随机，对与理解我们要说的内容无益。在这里用可以预测其行为的 Promise 比较适合。我们创建两个函数，一个会在 n 秒后执行成功（resolve），另一个会在 n 秒后执行失败（reject）。</p>
@@ -493,6 +421,10 @@
     
     
 </article>
+
+
+
+
 
 
 
@@ -571,6 +503,10 @@
 
 
 
+
+
+
+
     
         <article class="article content gallery" itemscope="" itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
@@ -630,6 +566,10 @@
     
     
 </article>
+
+
+
+
 
 
 
@@ -699,6 +639,10 @@
 
 
 
+
+
+
+
     
     
     </div>
@@ -717,9 +661,9 @@
                 <div class="columns is-mobile is-multiline is-centered">
                 
                     
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/">
                     
-                    GitHub
+                    Firefox
                     
                 </a>
                 
@@ -774,78 +718,8 @@
     
     
     
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-      })
-    </script>
-
     
     
 
