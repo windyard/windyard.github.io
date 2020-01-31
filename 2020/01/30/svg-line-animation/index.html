@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://windyard.com/pictures/svg-line-animation/long-dashes.png">
 <meta property="og:image" content="https://windyard.com/pictures/svg-line-animation/animate-stroke.gif">
 <meta property="og:image" content="https://windyard.com/pictures/svg-line-animation/animate-stroke-full.gif">
-<meta property="og:updated_time" content="2020-01-31T17:38:11.050Z">
+<meta property="og:updated_time" content="2020-01-31T18:07:41.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「译」如何制作 SVG 线条动画">
 <meta name="twitter:description" content="作者：Chris Coyier原文链接：Write Your First Service Worker in 5 Minutes 我敢说你们都见过那种看起来如同正在实时绘制 SVG 图形的 SVG 小动画。效果非常的赞。Jake Archibald 是这门技巧的先驱，他还写了一篇超级棒的引人入胜的博客来说明如何实现这种效果。Brian Suda 也在 24 Ways 上面写了一篇文章。Polygo">
@@ -124,7 +124,7 @@
         <span class="column is-narrow">
             
             
-            6 分钟 读完 (约 831 字)
+            6 分钟 读完 (约 830 字)
         </span>
         
     </div>
@@ -135,7 +135,7 @@
 <p>我基本上没有什么可以再补充了，只不过我的大脑刚刚弄明白，所以我想再解释一遍我的理解。</p>
 <h2 id="1-你有一个-SVG-图形"><a href="#1-你有一个-SVG-图形" class="headerlink" title="1. 你有一个 SVG 图形"></a>1. 你有一个 SVG 图形</h2><p><img src="/pictures/svg-line-animation/svg-shape.png" alt=""></p>
 <h2 id="2-图形必须有线条（stroke）"><a href="#2-图形必须有线条（stroke）" class="headerlink" title="2. 图形必须有线条（stroke）"></a>2. 图形必须有线条（stroke）</h2><p><img src="/pictures/svg-line-animation/svg-path.png" alt=""></p>
-<h2 id="3-线条可以被设置生成线段模式"><a href="#3-线条可以被设置生成线段模式" class="headerlink" title="3. 线条可以被设置生成线段模式"></a>3. 线条可以被设置生成线段模式</h2><p>我们可以用 Illustrator 实现，也可以通过编程的方式实现。我们用 CSS 来选中图形路径（这里我们假设我们用的是 inline SVG 或者是一个 <code>&lt;object&gt;</code> 元素）并应用线段样式。</p>
+<h2 id="3-线条可以被设置成线段模式"><a href="#3-线条可以被设置成线段模式" class="headerlink" title="3. 线条可以被设置成线段模式"></a>3. 线条可以被设置成线段模式</h2><p>我们可以用 Illustrator 实现，也可以通过编程的方式实现。我们用 CSS 来选中图形路径（这里我们假设我们用的是 inline SVG 或者是一个 <code>&lt;object&gt;</code> 元素）并应用线段样式。</p>
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">...</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"path"</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">"#000000"</span> <span class="hljs-attr">...</span> &gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.path</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">20</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样我们就设置了长度为 20px 的线段样式。</p>
