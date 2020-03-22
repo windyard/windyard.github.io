@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>标签: async - Windyard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Windyard">
+<meta property="og:url" content="https://windyard.com/tags/async/index.html">
+<meta property="og:site_name" content="Windyard">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="w.z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.jpg">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#async</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/09/6-reasons-async-await/" itemprop="url">「译」7 个用 Async/Await 取代 Promise 的理由（教程）</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-08T17:26:00.000Z" itemprop="datePublished">9月 9 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            15 分钟 读完 (约 2319 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p><strong><em>&#x4F5C;&#x8005;&#xFF1A;<a href="https://dev.to/gafi" target="_blank" rel="noopener">Mostafa Gaafar</a> </em></strong><br><strong><em>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://dev.to/gafi/7-reasons-to-always-use-async-await-over-plain-promises-tutorial-4ej9" target="_blank" rel="noopener">7 Reasons Why JavaScript Async/Await Is Better Than Plain Promises (Tutorial) </a></em></strong></p>
+<p>Async/Await &#x7531; NodeJS 7.6 &#x7248;&#x672C;&#x5F15;&#x5165;&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x88AB;&#x6240;&#x6709;&#x73B0;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;&#x6240;&#x652F;&#x6301;&#x3002;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F; JS &#x81EA; 2017 &#x5E74;&#x4EE5;&#x6765;&#x6700;&#x68D2;&#x7684;&#x66F4;&#x65B0;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x4FE1;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x5806;&#x5E26;&#x7740;&#x793A;&#x4F8B;&#x7684;&#x7406;&#x7531;&#x544A;&#x8BC9;&#x4F60;&#x4E3A;&#x4EC0;&#x4E48;&#x4F60;&#x5E94;&#x8BE5;&#x5C3D;&#x5FEB;&#x63A5;&#x53D7;&#x5B83;&#x5E76;&#x4E14;&#x6C38;&#x4E0D;&#x518D;&#x56DE;&#x5934;&#x3002;</p>
+<h2 id="Async-Await-&#x6982;&#x8FF0;"><a href="#Async-Await-&#x6982;&#x8FF0;" class="headerlink" title="Async/Await &#x6982;&#x8FF0;"></a>Async/Await &#x6982;&#x8FF0;</h2><p>&#x5BF9;&#x90A3;&#x4E9B;&#x4ECE;&#x672A;&#x542C;&#x8BF4;&#x8FC7;&#x8FD9;&#x4E2A;&#x8BDD;&#x9898;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x7B80;&#x4ECB;&#xFF1A;</p>
+<ul>
+<li>Asyne/Await &#x662F;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x5199;&#x6CD5;&#x3002;&#x4EE5;&#x524D;&#x7528;&#x4E8E;&#x5199;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x7684;&#x662F; callback &#x548C; Promise&#x3002;</li>
+<li>Async/Await &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x57FA;&#x4E8E; Promise &#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;&#x65E0;&#x6CD5;&#x7528;&#x5728;&#x53EA;&#x6709; callback &#x6216; node callba &#x7684;&#x60C5;&#x5F62;&#x4E2D;&#x3002;</li>
+<li>Async/Await &#x8DDF; Promise &#x4E00;&#x6837;&#x662F;&#x975E;&#x963B;&#x585E;&#x7684;&#x3002;</li>
+<li>Async/Await &#x4F7F;&#x5F97;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x7684;&#x5199;&#x6CD5;&#x548C;&#x884C;&#x4E3A;&#x90FD;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x6B63;&#x662F;&#x5B83;&#x5F3A;&#x5927;&#x7684;&#x5730;&#x65B9;&#x3002;</li>
+</ul>
+<h2 id="&#x8BED;&#x6CD5;"><a href="#&#x8BED;&#x6CD5;" class="headerlink" title="&#x8BED;&#x6CD5;"></a>&#x8BED;&#x6CD5;</h2><p>&#x5047;&#x8BBE;&#x6709;&#x4E00;&#x4E2A; <code>getJSON</code> &#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A; Promise &#x4F1A;&#x89E3;&#x6790;&#x51FA;&#x51E0;&#x4E2A; JSON &#x5BF9;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x8981;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x6253;&#x5370;&#x51FA; JSON &#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; &#x201C;done&#x201D; &#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x7528; Promise &#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span></span><br><span class="line">  getJSON()</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;done&quot;</span></span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line">makeRequest()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x7136;&#x540E;&#x8FD9;&#x662F;&#x7528; Async/Await &#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-keyword">async</span> () =&gt; {</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> getJSON())</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;done&quot;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">makeRequest()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x8FD9;&#x91CC;&#x6709;&#x51E0;&#x70B9;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#xFF1A;</p>
+<ol>
+<li><p>&#x51FD;&#x6570;&#x524D;&#x9762;&#x6709; <code>async</code> &#x5173;&#x952E;&#x5B57;&#x3002;<code>await</code> &#x5173;&#x952E;&#x5B57;&#x53EA;&#x80FD;&#x7528;&#x5728;&#x7531; <code>async</code> &#x5173;&#x952E;&#x5B57;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x91CC;&#x3002;<code>async</code> &#x51FD;&#x6570;&#x4F1A;&#x9690;&#x5F0F;&#x7684;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#xFF0C;&#x8FD9;&#x4E2A; Promise &#x7684;&#x89E3;&#x6790;&#x503C;&#x662F;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x662F; <code>&quot;done&quot;</code> &#x5B57;&#x7B26;&#x4E32;&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8FD9;&#x70B9;&#x4E5F;&#x6697;&#x793A;&#x4E86;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x5C06; <code>await</code> &#x7528;&#x5728;&#x6211;&#x4EEC;&#x4EE3;&#x7801;&#x7684;&#x6700;&#x5916;&#x5C42;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5FC5;&#x987B;&#x88AB;&#x653E;&#x7F6E;&#x5728; <code>async</code> &#x51FD;&#x6570;&#x5185;&#x90E8;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// this will not work in top level</span></span><br><span class="line"><span class="hljs-comment">// await makeRequest()</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// this will work</span></span><br><span class="line">makeRequest().then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-comment">// do something</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>await getJSON()</code> &#x610F;&#x601D;&#x662F; <code>console.log</code> &#x5C06;&#x4F1A;&#x7B49;&#x5F85; <code>getJSON</code> &#x7684; Promise &#x89E3;&#x6790;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x628A;&#x7ED3;&#x679C;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;</p>
+</li>
+</ol>
+<h2 id="&#x597D;&#x5728;&#x90A3;&#x91CC;&#x5462;&#xFF1F;"><a href="#&#x597D;&#x5728;&#x90A3;&#x91CC;&#x5462;&#xFF1F;" class="headerlink" title="&#x597D;&#x5728;&#x90A3;&#x91CC;&#x5462;&#xFF1F;"></a>&#x597D;&#x5728;&#x90A3;&#x91CC;&#x5462;&#xFF1F;</h2><ol>
+<li><p>&#x7B80;&#x6D01;&#x5E72;&#x51C0;<br>&#x770B;&#x6211;&#x4EEC;&#x8282;&#x7701;&#x4E86;&#x591A;&#x5C11;&#x4EE3;&#x7801;&#xFF01;&#x5373;&#x4F7F;&#x5728;&#x6211;&#x4EEC;&#x968F;&#x624B;&#x7F16;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4E5F;&#x80FD;&#x660E;&#x663E;&#x7684;&#x770B;&#x5230;&#x7701;&#x4E86;&#x4E0D;&#x5C11;&#x4EE3;&#x7801;&#x3002;&#x6211;&#x4EEC;&#x65E0;&#x9700;&#x518D;&#x5199; <code>.then</code> &#x7136;&#x540E;&#x7528;&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x51FD;&#x6570;&#x6765;&#x5904;&#x7406;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; <code>data</code> &#x53D8;&#x91CF;&#x6765;&#x8868;&#x793A;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x8FD8;&#x907F;&#x514D;&#x4E86;&#x4EE3;&#x7801;&#x5D4C;&#x5957;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x6211;&#x4EEC;&#x5C06;&#x66F4;&#x660E;&#x663E;&#x7684;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x4E2A;&#x4E2A;&#x7684;&#x4F18;&#x70B9;&#x5C06;&#x7D2F;&#x79EF;&#x6210;&#x5DE8;&#x5927;&#x7684;&#x4F18;&#x52BF;&#x3002;</p>
+</li>
+<li><p>&#x9519;&#x8BEF;&#x5904;&#x7406;<br>Async/Await &#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x60EF;&#x7528;&#x7684; <code>try/catch</code> &#x7ED3;&#x6784;&#x6765;&#x5904;&#x7406;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x9519;&#x8BEF;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; Promise&#xFF0C;<code>try/catch</code> &#x65E0;&#x6CD5;&#x6355;&#x83B7; <code>JSON.parse</code> &#x4EA7;&#x751F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x662F;&#x5728; Promise &#x5185;&#x90E8;&#x4EA7;&#x751F;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728; Promise &#x4E0A;&#x8C03;&#x7528; <code>.catch</code> &#x65B9;&#x6CD5;&#x5E76;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x7684;&#x4EE3;&#x7801;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5728;&#x4F60;&#x7684;&#x751F;&#x4EA7;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x5199;&#x5E94;&#x8BE5;&#x4F1A;&#x6BD4; <code>console.log</code> &#x66F4;&#x7A33;&#x59A5;&#x4E00;&#x4E9B;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">try</span> {</span><br><span class="line">    getJSON()</span><br><span class="line">      .then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {</span><br><span class="line">        <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x89E3;&#x6790;&#x5C06;&#x4F1A;&#x5931;&#x8D25;</span></span><br><span class="line">        <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(result)</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">      })</span><br><span class="line">      <span class="hljs-comment">// &#x53D6;&#x6D88;&#x6B64;&#x5904;&#x6CE8;&#x91CA;&#x4EE5;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x9519;&#x8BEF;</span></span><br><span class="line">      <span class="hljs-comment">// .catch((err) =&gt; {</span></span><br><span class="line">      <span class="hljs-comment">//   console.log(err)</span></span><br><span class="line">      <span class="hljs-comment">// })</span></span><br><span class="line">  } <span class="hljs-keyword">catch</span> (err) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err)</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7528; async/await &#x6765;&#x5199;&#x540C;&#x6837;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x73B0;&#x5728; <code>catch</code> &#x4EE3;&#x7801;&#x5C06;&#x80FD;&#x591F;&#x5904;&#x7406;&#x89E3;&#x6790;&#x9519;&#x8BEF;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-keyword">async</span> () =&gt; {</span><br><span class="line">  <span class="hljs-keyword">try</span> {</span><br><span class="line">    <span class="hljs-comment">// this parse may fail</span></span><br><span class="line">    <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-keyword">await</span> getJSON())</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">  } <span class="hljs-keyword">catch</span> (err) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err)</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>&#x6761;&#x4EF6;&#x8BED;&#x53E5;<br>&#x5047;&#x8BBE;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C06;&#x4F1A;&#x83B7;&#x53D6;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x6570;&#x636E;&#x5185;&#x5BB9;&#x51B3;&#x5B9A;&#x662F;&#x8981;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x8FD8;&#x662F;&#x57FA;&#x4E8E;&#x83B7;&#x53D6;&#x7684;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x64CD;&#x4F5C;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">return</span> getJSON()</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</span><br><span class="line">      <span class="hljs-keyword">if</span> (data.needsAnotherRequest) {</span><br><span class="line">        <span class="hljs-keyword">return</span> makeAnotherRequest(data)</span><br><span class="line">          .then(<span class="hljs-function"><span class="hljs-params">moreData</span> =&gt;</span> {</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(moreData)</span><br><span class="line">            <span class="hljs-keyword">return</span> moreData</span><br><span class="line">          })</span><br><span class="line">      } <span class="hljs-keyword">else</span> {</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">        <span class="hljs-keyword">return</span> data</span><br><span class="line">      }</span><br><span class="line">    })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5149;&#x662F;&#x770B;&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x5C31;&#x8BA9;&#x4EBA;&#x5934;&#x75BC;&#x3002;&#x800C;&#x4E14;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x5D4C;&#x5957;&#xFF08;6 &#x5C42;&#xFF09;&#x3001;&#x62EC;&#x53F7;&#x3001;&#x4EE5;&#x53CA;&#x4E3A;&#x4E86;&#x628A;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x4F20;&#x9012;&#x5230;&#x4E3B; Promise &#x7684; return &#x8BED;&#x53E5;&#x5F88;&#x5BB9;&#x6613;&#x8BA9;&#x4EBA;&#x6655;&#x5934;&#x8F6C;&#x5411;&#x3002;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7528; async/await &#x91CD;&#x5199;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x540E;&#xFF0C;&#x4EE3;&#x7801;&#x5219;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x6613;&#x8BFB;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-keyword">async</span> () =&gt; {</span><br><span class="line">  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> getJSON()</span><br><span class="line">  <span class="hljs-keyword">if</span> (data.needsAnotherRequest) {</span><br><span class="line">    <span class="hljs-keyword">const</span> moreData = <span class="hljs-keyword">await</span> makeAnotherRequest(data);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(moreData)</span><br><span class="line">    <span class="hljs-keyword">return</span> moreData</span><br><span class="line">  } <span class="hljs-keyword">else</span> {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">    <span class="hljs-keyword">return</span> data    </span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>&#x4E2D;&#x95F4;&#x503C;<br>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x9047;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x5F62;&#xFF1A;&#x8C03;&#x7528; <code>Promise1</code> &#x7136;&#x540E;&#x7528;&#x5B83;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8C03;&#x7528; <code>Promise2</code>&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7528;&#x5B83;&#x4EEC;&#x4E24;&#x4E2A;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6765;&#x8C03;&#x7528; <code>Promise3</code>&#x3002;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x80FD;&#x4F1A;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">return</span> promise1()</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">value1</span> =&gt;</span> {</span><br><span class="line">      <span class="hljs-comment">// do something</span></span><br><span class="line">      <span class="hljs-keyword">return</span> promise2(value1)</span><br><span class="line">        .then(<span class="hljs-function"><span class="hljs-params">value2</span> =&gt;</span> {</span><br><span class="line">          <span class="hljs-comment">// do something          </span></span><br><span class="line">          <span class="hljs-keyword">return</span> promise3(value1, value2)</span><br><span class="line">        })</span><br><span class="line">    })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5982;&#x679C; <code>promise3</code> &#x4E0D;&#x9700;&#x8981; <code>value1</code> &#x90A3;&#x4E48;&#x5C31;&#x53EF;&#x4EE5;&#x5C06; Promise &#x5D4C;&#x5957;&#x5F04;&#x7684;&#x6241;&#x5E73;&#x4E00;&#x4E9B;&#x3002;&#x8981;&#x662F;&#x4F60;&#x65E0;&#x6CD5;&#x63A5;&#x53D7;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x53EF;&#x4EE5;&#x628A; value1 &#x548C; value2 &#x90FD;&#x5305;&#x5728;&#x4E00;&#x4E2A; <code>Promise.all</code> &#x4E2D;&#x6765;&#x907F;&#x514D;&#x6DF1;&#x5C42;&#x7684;&#x5D4C;&#x5957;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">return</span> promise1()</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">value1</span> =&gt;</span> {</span><br><span class="line">      <span class="hljs-comment">// do something</span></span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.all([value1, promise2(value1)])</span><br><span class="line">    })</span><br><span class="line">    .then(<span class="hljs-function">(<span class="hljs-params">[value1, value2]</span>) =&gt;</span> {</span><br><span class="line">      <span class="hljs-comment">// do something          </span></span><br><span class="line">      <span class="hljs-keyword">return</span> promise3(value1, value2)</span><br><span class="line">    })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x4E3A;&#x4E86;&#x53EF;&#x8BFB;&#x6027;&#x727A;&#x7272;&#x4E86;&#x90E8;&#x5206;&#x8BED;&#x4E49;&#x3002;&#x5C06; <code>value1</code> &#x548C; <code>value2</code> &#x653E;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x610F;&#x4E49;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x907F;&#x514D; Promise &#x7684;&#x5D4C;&#x5957;&#x3002;</p>
+<p>&#x7528; async/await &#x5B9E;&#x73B0;&#x540C;&#x6837;&#x7684;&#x903B;&#x8F91;&#x5F02;&#x4E4E;&#x5BFB;&#x5E38;&#x7684;&#x7B80;&#x5355;&#x548C;&#x76F4;&#x89C2;&#x3002;&#x5B83;&#x8BA9;&#x4F60;&#x8D28;&#x7591;&#x81EA;&#x5DF1;&#x90A3;&#x4E9B;&#x82B1;&#x5728;&#x62FC;&#x547D;&#x4F18;&#x5316; Promise &#x4EE3;&#x7801;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#x672C;&#x53EF;&#x4EE5;&#x505A;&#x591A;&#x5C11;&#x7F8E;&#x5999;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-keyword">async</span> () =&gt; {</span><br><span class="line">  <span class="hljs-keyword">const</span> value1 = <span class="hljs-keyword">await</span> promise1()</span><br><span class="line">  <span class="hljs-keyword">const</span> value2 = <span class="hljs-keyword">await</span> promise2(value1)</span><br><span class="line">  <span class="hljs-keyword">return</span> promise3(value1, value2)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>&#x9519;&#x8BEF;&#x5806;&#x6808;<br>&#x8BBE;&#x60F3;&#x6709;&#x4E00;&#x6BB5;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#x591A;&#x4E2A; Promise &#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x94FE;&#x7684;&#x67D0;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x629B;&#x51FA;&#x4E86;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">return</span> callAPromise()</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> callAPromise())</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> callAPromise())</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> callAPromise())</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> callAPromise())</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</span><br><span class="line">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;oops&quot;</span>);</span><br><span class="line">    })</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">makeRequest()</span><br><span class="line">  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err);</span><br><span class="line">    <span class="hljs-comment">// output</span></span><br><span class="line">    <span class="hljs-comment">// Error: oops at callAPromise.then.then.then.then.then (index.js:8:13)</span></span><br><span class="line">  })</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Promise &#x94FE;&#x8FD4;&#x56DE;&#x7684;&#x9519;&#x8BEF;&#x7684;&#x5806;&#x6808;&#x6CA1;&#x6709;&#x7ED9;&#x51FA;&#x9519;&#x8BEF;&#x4EA7;&#x751F;&#x4F4D;&#x7F6E;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x66F4;&#x7CDF;&#x7CD5;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x8FD8;&#x6709;&#x8BEF;&#x5BFC;&#x6027;&#xFF1B;&#x5B83;&#x5305;&#x542B;&#x7684;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x540D; <code>callAPromise</code> &#x5728;&#x8FD9;&#x91CC;&#x5B8C;&#x5168;&#x662F;&#x65E0;&#x8F9C;&#x7684;&#xFF08;&#x4E0D;&#x8FC7;&#x6587;&#x4EF6;&#x540D;&#x548C;&#x884C;&#x53F7;&#x8FD8;&#x662F;&#x6709;&#x7528;&#x7684;&#xFF09;&#x3002;</p>
+<p>&#x76F8;&#x53CD;&#xFF0C;async/await &#x7ED9;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#x5806;&#x6808;&#x6307;&#x51FA;&#x4E86;&#x771F;&#x6B63;&#x5305;&#x542B;&#x9519;&#x8BEF;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> makeRequest = <span class="hljs-keyword">async</span> () =&gt; {</span><br><span class="line">  <span class="hljs-keyword">await</span> callAPromise()</span><br><span class="line">  <span class="hljs-keyword">await</span> callAPromise()</span><br><span class="line">  <span class="hljs-keyword">await</span> callAPromise()</span><br><span class="line">  <span class="hljs-keyword">await</span> callAPromise()</span><br><span class="line">  <span class="hljs-keyword">await</span> callAPromise()</span><br><span class="line">  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;oops&quot;</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">makeRequest()</span><br><span class="line">  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err);</span><br><span class="line">    <span class="hljs-comment">// output</span></span><br><span class="line">    <span class="hljs-comment">// Error: oops at makeRequest (index.js:7:9)</span></span><br><span class="line">  })</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5F53;&#x4F60;&#x5F00;&#x7740;&#x7F16;&#x8F91;&#x5668;&#x5728;&#x672C;&#x5730;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x5F71;&#x54CD;&#x4E0D;&#x5927;&#xFF0C;&#x4E0D;&#x8FC7;&#x5F53;&#x4F60;&#x8BD5;&#x56FE;&#x4ECE;&#x751F;&#x4EA7;&#x670D;&#x52A1;&#x5668;&#x5206;&#x6790;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x65F6;&#x7528;&#x5904;&#x5C31;&#x5927;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x77E5;&#x9053;&#x9519;&#x8BEF;&#x4EA7;&#x751F;&#x5728; <code>makeRequest</code> &#x8981;&#x597D;&#x8FC7;&#x77E5;&#x9053;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x5728;&#x4E00;&#x4E2A; <code>then</code> &#x540E;&#x7684; <code>then</code> &#x540E;&#x7684; <code>then</code> &#x2026;</p>
+</li>
+<li><p>&#x8C03;&#x8BD5;<br>&#x7528; async/await &#x7684;&#x4E00;&#x4E2A;&#x6740;&#x624B;&#x7EA7;&#x4F18;&#x52BF;&#x662F;&#x8C03;&#x8BD5;&#x8D77;&#x6765;&#x66F4;&#x7B80;&#x5355;&#x3002;&#x7531;&#x4E8E;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x8C03;&#x8BD5; Promise &#x4E00;&#x76F4;&#x662F;&#x4E2A;&#x75DB;&#x70B9;&#xFF1A;</p>
+<ol>
+<li><p>&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x6CA1;&#x6709;&#x51FD;&#x6570;&#x4F53;&#xFF09;&#x7684;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x65E0;&#x6CD5;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x3002;</p>
+<p><img src="/pictures/6-reasons-async-await/1.png" alt="&#x6709;&#x672C;&#x4E8B;&#x5728;&#x8FD9;&#x513F;&#x52A0;&#x4E2A;&#x65AD;&#x70B9;&#x8BD5;&#x8BD5;"></p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4F60;&#x5728;&#x67D0;&#x4E2A; <code>.then</code> &#x4EE3;&#x7801;&#x5757;&#x5185;&#x90E8;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x6B65;&#x8FDB;&#x8C03;&#x8BD5;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4E0D;&#x4F1A;&#x79FB;&#x5230;&#x4E0B;&#x4E00;&#x4E2A; <code>.then</code> &#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EA;&#x80FD;&#x201D;&#x6B65;&#x8FDB;&#x201C;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x4F7F;&#x7528; async/await &#x65F6;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x4F9D;&#x8D56;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x4F60;&#x53EF;&#x4EE5;&#x50CF;&#x8C03;&#x8BD5;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x90A3;&#x6837;&#x6B65;&#x8FDB; await &#x8C03;&#x7528;&#x3002;</p>
+<p><img src="/pictures/6-reasons-async-await/2.png" alt></p>
+</li>
+</ol>
+</li>
+<li><p>&#x4F60;&#x53EF;&#x4EE5; <code>await</code> &#x4E00;&#x5207;<br>&#x6700;&#x540E;&#x7684;&#x8981;&#x70B9;&#xFF0C;<code>await</code> &#x5728;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x4F60;&#x53EF;&#x4EE5;&#x5199; <code>await 5</code>&#xFF0C; &#x76F8;&#x5F53;&#x4E8E; `Promise.resolve(5)&#x3002;&#x4E4D;&#x770B;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x6CA1;&#x5565;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x4F60;&#x5199;&#x5DE5;&#x5177;&#x6216;&#x5E93;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x4E0D;&#x786E;&#x5B9A;&#x8F93;&#x5165;&#x662F;&#x540C;&#x6B65;&#x8FD8;&#x662F;&#x5F02;&#x6B65;&#x7684;&#x60C5;&#x51B5;&#x65F6;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x5047;&#x5982;&#x4F60;&#x60F3;&#x8BB0;&#x5F55;&#x4F60;&#x5E94;&#x7528;&#x91CC;&#x67D0;&#x4E2A; API &#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x5E0C;&#x671B;&#x8FD9;&#x4E2A;&#x8BB0;&#x5F55;&#x51FD;&#x6570;&#x662F;&#x901A;&#x7528;&#x7684;&#x3002;&#x7528; Promise &#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> recordTime = <span class="hljs-function">(<span class="hljs-params">makeRequest</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-keyword">const</span> timeStart = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">  makeRequest().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-comment">// throws error for sync functions (.then is not a function)</span></span><br><span class="line">    <span class="hljs-keyword">const</span> timeEnd = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;time take:&apos;</span>, timeEnd - timeStart);</span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x8FD9;&#x91CC;&#x6240;&#x6709;&#x7684; API &#x8C03;&#x7528;&#x90FD;&#x8FD4;&#x56DE; Promise&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53BB;&#x8BB0;&#x5F55;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x5462;&#xFF1F;&#x5B83;&#x5C06;&#x4F1A;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x56E0;&#x4E3A;&#x540C;&#x6B65;&#x51FD;&#x6570;&#x4E0D;&#x8FD4;&#x56DE; Promise&#x3002;&#x4E00;&#x4E2A;&#x5F88;&#x6709;&#x6548;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#x628A;&#x51FD;&#x6570;&#x5305;&#x88F9;&#x5728; <code>Promise.resolve()</code> &#x4E2D;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528; async/await&#xFF0C;&#x4F60;&#x5C31;&#x65E0;&#x9700;&#x62C5;&#x5FC3;&#x4E0A;&#x8FF0;&#x60C5;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A; await &#x8BA9;&#x4F60;&#x5B89;&#x5168;&#x7684;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x503C;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x5426;&#x662F; Promise&#x3002;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> recordTime = <span class="hljs-keyword">async</span> (makeRequest) =&gt; {</span><br><span class="line">  <span class="hljs-keyword">const</span> timeStart = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">  <span class="hljs-keyword">await</span> makeRequest(); <span class="hljs-comment">// works for any sync or async function</span></span><br><span class="line">  <span class="hljs-keyword">const</span> timeEnd = <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;time take:&apos;</span>, timeEnd - timeStart);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h2><p>Async/Await &#x662F;&#x8FD1;&#x5E74;&#x6765; JavaScript &#x6DFB;&#x52A0;&#x7684;&#x9769;&#x547D;&#x6027;&#x7684;&#x7279;&#x6027;&#x4E4B;&#x4E00;&#x3002;&#x5B83;&#x8BA9;&#x4F60;&#x8BA4;&#x8BC6;&#x5230; Promise &#x8BED;&#x6CD5;&#x662F;&#x591A;&#x4E48;&#x6DF7;&#x4E71;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x66F4;&#x76F4;&#x89C2;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="&#x7591;&#x8651;"><a href="#&#x7591;&#x8651;" class="headerlink" title="&#x7591;&#x8651;"></a>&#x7591;&#x8651;</h2><p>&#x5728;&#x4F7F;&#x7528; async/await &#x65F6;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E9B;&#x7591;&#x8651;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8BA9;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x7684;&#x7279;&#x5F81;&#x4E0D;&#x90A3;&#x4E48;&#x660E;&#x663E;&#x4E86;&#xFF1A;&#x4EE5;&#x524D;&#x6211;&#x4EEC;&#x4E00;&#x770B;&#x5230; <code>.then</code> &#x56DE;&#x8C03;&#x5C31;&#x77E5;&#x9053;&#x662F;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#xFF0C;&#x73B0;&#x5728;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x82B1;&#x51E0;&#x5468;&#x65F6;&#x95F4;&#x6765;&#x9002;&#x5E94;&#x65B0;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x4E0D;&#x8FC7; C# &#x4E2D;&#x5DF2;&#x7ECF;&#x5F15;&#x5165;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x597D;&#x51E0;&#x5E74;&#x4E86;&#xFF0C;&#x4E86;&#x89E3;&#x5B83;&#x7684;&#x4EBA;&#x90FD;&#x77E5;&#x9053;&#x8FD9;&#x77ED;&#x6682;&#x7684;&#x4E0D;&#x9002;&#x5E94;&#x662F;&#x503C;&#x5F97;&#x7684;&#x3002;</p>
+<p>Follow me on twitter <a href="https://twitter.com/imGaafar" target="_blank" rel="noopener">@imgaafar</a></p>
+<p>This article was originally <a href="https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9" target="_blank" rel="noopener">published on Hackernoon</a></p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 w.z&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">
+                    
+                    Firefox
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>「译」深度理解 JavaScript ES6 中的 “Super” 和 “Extends” - Windyard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="&amp;#x4F5C;&amp;#x8005;&amp;#xFF1A;Anurag Majumdar&amp;#x539F;&amp;#x6587;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;&amp;#x201C;Super&amp;#x201D; and &amp;#x201C;Extends&amp;#x201D; In JavaScript ES6 - Understanding The Tough Parts ES6 &amp;#x7684; class &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」深度理解 JavaScript ES6 中的 “Super” 和 “Extends”">
+<meta property="og:url" content="https://windyard.com/2019/05/27/super-extends-js/index.html">
+<meta property="og:site_name" content="Windyard">
+<meta property="og:description" content="&amp;#x4F5C;&amp;#x8005;&amp;#xFF1A;Anurag Majumdar&amp;#x539F;&amp;#x6587;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;&amp;#x201C;Super&amp;#x201D; and &amp;#x201C;Extends&amp;#x201D; In JavaScript ES6 - Understanding The Tough Parts ES6 &amp;#x7684; class &amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://windyard.com/pictures/super-extends/1.png">
+<meta property="og:image" content="https://windyard.com/pictures/super-extends/2.png">
+<meta property="article:published_time" content="2019-05-27T13:35:42.000Z">
+<meta property="article:modified_time" content="2019-06-07T16:52:43.155Z">
+<meta property="article:author" content="w.z">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Web 开发">
+<meta property="article:tag" content="Super">
+<meta property="article:tag" content="Extends">
+<meta property="article:tag" content="JS对象">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://windyard.com/pictures/super-extends/1.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.jpg">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            「译」深度理解 JavaScript ES6 中的 “Super” 和 “Extends”
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-27T13:35:42.000Z" itemprop="datePublished">5月 27 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            16 分钟 读完 (约 2389 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p><strong><em>&#x4F5C;&#x8005;&#xFF1A;<a href="https://medium.com/@anurag.majumdar" target="_blank" rel="noopener">Anurag Majumdar</a></em></strong><br><strong><em>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://medium.com/beginners-guide-to-mobile-web-development/super-and-extends-in-javascript-es6-understanding-the-tough-parts-6120372d3420" target="_blank" rel="noopener">&#x201C;Super&#x201D; and &#x201C;Extends&#x201D; In JavaScript ES6 - Understanding The Tough Parts</a></em></strong></p>
+<p><strong>ES6</strong> &#x7684; <strong>class</strong> &#x8BED;&#x6CD5;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x65B0;&#x7279;&#x6027;&#x8BA9; <strong>JavaScript</strong> &#x663E;&#x5F97;&#x7B80;&#x5355;&#x591A;&#x4E86;&#x3002;&#x4ECA;&#x5929;&#x6211;&#x4EEC;&#x5C06;&#x7ED3;&#x5408; <strong>class</strong> &#x8BED;&#x6CD5;&#x548C;<strong>&#x7EE7;&#x627F;</strong>&#x6982;&#x5FF5;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x3002;&#x731C;&#x7684;&#x6CA1;&#x9519;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x7814;&#x7A76;&#x7684;&#x6B63;&#x662F; <strong>ES6</strong> &#x4E2D;&#x7684; <strong>super</strong> &#x548C; <strong>extends</strong> &#x5173;&#x952E;&#x5B57;&#x3002;&#x5B66;&#x4E60;&#x65B0;&#x7279;&#x6027;&#x6700;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x5728;&#x5B9E;&#x4F8B;&#x4E2D;&#x6DF1;&#x5165;&#x7684;&#x7814;&#x7A76;&#x5B83;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5427;&#xFF01;</p>
+<h2 id="&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;-super-&#x548C;-extends"><a href="#&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;-super-&#x548C;-extends" class="headerlink" title="&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528; super &#x548C; extends"></a>&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528; super &#x548C; extends</h2><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x501F;&#x52A9; <strong>super</strong> &#x548C; <strong>extends</strong>  JavaScript &#x4E2D;&#x6269;&#x5C55;&#x4E00;&#x4E2A; class&#x3002;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x7684;&#x3002;</p>
+<p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(name, weight) {</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">        <span class="hljs-keyword">this</span>.weight = weight;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    eat() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is eating!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    sleep() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is going to sleep!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    wakeUp() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is waking up!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gorilla</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(name, weight) {</span><br><span class="line">        <span class="hljs-keyword">super</span>(name, weight);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    climbTrees() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is climbing trees!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    poundChest() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is pounding its chest!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    showVigour() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">super</span>.eat()}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span>`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    dailyRoutine() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">super</span>.wakeUp()}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span> <span class="hljs-subst">${<span class="hljs-keyword">super</span>.eat()}</span> <span class="hljs-subst">${<span class="hljs-keyword">super</span>.sleep()}</span>`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">display</span>(<span class="hljs-params">content</span>) </span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(content);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> gorilla = <span class="hljs-keyword">new</span> Gorilla(<span class="hljs-string">&apos;George&apos;</span>, <span class="hljs-string">&apos;160Kg&apos;</span>);</span><br><span class="line">display(gorilla.poundChest());</span><br><span class="line">display(gorilla.sleep());</span><br><span class="line">display(gorilla.showVigour());</span><br><span class="line">display(gorilla.dailyRoutine());</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// OUTPUT:</span></span><br><span class="line"><span class="hljs-comment">// George is pounding its chest!</span></span><br><span class="line"><span class="hljs-comment">// George is going to sleep!</span></span><br><span class="line"><span class="hljs-comment">// George is eating! George is pounding its chest!</span></span><br><span class="line"><span class="hljs-comment">// George is waking up! George is pounding its chest! George is eating! George is going to sleep!</span></span><br></pre></td></tr></tbody></table></figure><br><em>ES6 Class &#x53CA; Subclass &#x8BED;&#x6CD5;</em><p></p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x6709;&#x4E24;&#x4E2A; <strong>JavaScript</strong> class&#xFF0C;&#x5206;&#x522B;&#x53EB;&#x505A; <strong>Animal</strong> &#x548C; <strong>Gorilla</strong>&#x3002;</p>
+<p><strong>Gorilla</strong> class &#x901A;&#x8FC7;&#x4F7F;&#x7528; <strong>extends</strong> &#x5173;&#x952E;&#x5B57;&#x5C06;&#x81EA;&#x5DF1;&#x8BBE;&#x7F6E;&#x4E3A; <strong>Animal</strong> class &#x7684;<strong>&#x9644;&#x5C5E;&#x7C7B;&#xFF0C;</strong>&#x6216;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x5B50;&#x7C7B;</strong>&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x4F60;&#x6709;&#x6CA1;&#x6709;&#x6CE8;&#x610F;&#x5230;&#xFF0C;<strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x5728;&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7528;&#x6CD5;&#x3002;&#x5728; <strong>Gorilla</strong> &#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF08;&#x4EE3;&#x7801; 23 &#x884C;&#xFF09;&#xFF0C;<strong>super</strong> &#x88AB;&#x5F53;&#x4F5C;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#xFF0C;&#x7136;&#x800C;&#x5728; <strong>Gorilla</strong> &#x7684; <strong>showVigour()</strong> &#x65B9;&#x6CD5;&#xFF08;&#x4EE3;&#x7801; 35 &#x884C;&#xFF09;&#x53CA; <strong>dailyRoutine()</strong> &#x65B9;&#x6CD5;&#xFF08;&#x4EE3;&#x7801; 39 &#x884C;&#xFF09;&#x4E2D; <strong>super</strong> &#x5374;&#x662F;&#x88AB;&#x5F53;&#x4F5C;<strong>&#x201C;&#x5BF9;&#x8C61;&#x201D;</strong>&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<p><strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x6709;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7528;&#x6CD5;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF1A;&#x5728;&#x7B2C; 23 &#x884C;&#x4E2D;&#xFF0C;<strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x662F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;<strong>&#x51FD;&#x6570;</strong>&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x4F20;&#x9012;&#x7ED9; <strong>Gorilla</strong> &#x7684;&#x53C2;&#x6570;&#x6765;&#x8C03;&#x7528;&#x7236;&#x7C7B; <strong>Animal</strong>&#x3002;&#x8FD9;&#x662F;&#x786E;&#x4FDD; <strong>Gorilla</strong> &#x662F; <strong>Animal</strong> &#x7684;&#x5B9E;&#x4F8B;&#x7684;&#x5173;&#x952E;&#x4E00;&#x6B65;&#x3002;&#x5728;&#x7B2C; 35 &#x884C;&#x548C;&#x7B2C; 39 &#x884C;&#x4E2D;&#xFF0C;<strong>Super</strong> &#x88AB;&#x7528;&#x4F5C;&#x662F;&#x4E00;&#x4E2A;<strong>&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x6765;&#x5F15;&#x7528;&#x4E00;&#x4E2A; <strong>Animal</strong> &#x5B9E;&#x4F8B;&#xFF08;&#x7236;&#x7C7B;&#xFF09;&#x3002;&#x8FD9;&#x91CC;&#x7684; <strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x7528;&#x6765;&#x663E;&#x5F0F;&#x7684;&#x8C03;&#x7528;&#x7236;&#x7C7B; <strong>Animal</strong> &#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x719F;&#x6089; C#&#x3001;JAVA&#x3001;Python &#x7B49;&#x8BED;&#x8A00;&#x7684;&#x4EBA;&#x5E94;&#x8BE5;&#x80FD;&#x660E;&#x767D;&#x8FD9;&#x662F;&#x600E;&#x4E48;&#x56DE;&#x4E8B;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5728; ES6 &#x51FA;&#x73B0;&#x4E4B;&#x524D; JavaScript &#x53EF;&#x6CA1;&#x8FD9;&#x4E48;&#x7B80;&#x660E;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5728;&#x7C7B;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E0A;&#x3002;&#x90A3;&#x4E48;&#x5728;&#x6CA1;&#x6709; <strong>class</strong> &#x8BED;&#x6CD5;&#x3001;<strong>super</strong> &#x53CA; <strong>extends</strong> &#x5173;&#x952E;&#x5B57;&#x7684;&#x5E74;&#x4EE3;&#x4EBA;&#x4EEC;&#x662F;&#x600E;&#x4E48;&#x5199;&#x4EE3;&#x7801;&#x7684;&#x5462;&#xFF1F;&#x8FD8;&#x662F;&#x8FD9;&#x7FA4;&#x4ECE;&#x672A;&#x7528;&#x8FC7;&#x4EE5;&#x4E0A;&#x6982;&#x5FF5;&#x7684;&#x4EBA;&#x7A81;&#x53D1;&#x5947;&#x60F3;&#x7684;&#x8981;&#x6DFB;&#x52A0;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#xFF1F;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x63A2;&#x5BFB;&#x4E00;&#x4E0B;&#xFF01;</p>
+<h2 id="&#x4F20;&#x7EDF;&#x7684;-JavaScript-&#x7C7B;"><a href="#&#x4F20;&#x7EDF;&#x7684;-JavaScript-&#x7C7B;" class="headerlink" title="&#x4F20;&#x7EDF;&#x7684; JavaScript &#x7C7B;"></a>&#x4F20;&#x7EDF;&#x7684; JavaScript &#x7C7B;</h2><p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684; JavaScript &#x4F7F;&#x7528;<strong>&#x539F;&#x578B;&#x7EE7;&#x627F;</strong>&#x6765;&#x6269;&#x5C55;&#x7C7B;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x7528;&#x4F20;&#x7EDF;&#x7684; JavaScript &#x8BED;&#x6CD5;&#x6765;&#x5199;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x4E5F;&#x8BB8;&#x8FD9;&#x5C06;&#x5E2E;&#x4F60;&#x627E;&#x5230;&#x9690;&#x85CF;&#x7684;&#x771F;&#x76F8;&#x3002;</p>
+<p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span>(<span class="hljs-params">name, weight</span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-keyword">this</span>.weight = weight;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Animal.prototype.eat = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is eating!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Animal.prototype.sleep = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is going to sleep!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Animal.prototype.wakeUp = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is waking up!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Gorilla</span>(<span class="hljs-params">name, weight</span>) </span>{</span><br><span class="line">    Animal.call(<span class="hljs-keyword">this</span>, name, weight);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype = <span class="hljs-built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Gorilla.prototype.constructor = Gorilla;</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.climbTrees = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is climbing trees!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.poundChest = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is pounding its chest!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.showVigour = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${Animal.prototype.eat.call(<span class="hljs-keyword">this</span>)}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span>`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.dailyRoutine = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${Animal.prototype.wakeUp.call(<span class="hljs-keyword">this</span>)}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span> <span class="hljs-subst">${Animal.prototype.eat.call(<span class="hljs-keyword">this</span>)}</span> <span class="hljs-subst">${Animal.prototype.sleep.call(<span class="hljs-keyword">this</span>)}</span>`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">display</span>(<span class="hljs-params">content</span>) </span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(content);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> gorilla = <span class="hljs-keyword">new</span> Gorilla(<span class="hljs-string">&apos;George&apos;</span>, <span class="hljs-string">&apos;160Kg&apos;</span>);</span><br><span class="line">display(gorilla.poundChest());</span><br><span class="line">display(gorilla.sleep());</span><br><span class="line">display(gorilla.showVigour());</span><br><span class="line">display(gorilla.dailyRoutine());</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// OUTPUT:</span></span><br><span class="line"><span class="hljs-comment">// George is pounding its chest!</span></span><br><span class="line"><span class="hljs-comment">// George is going to sleep!</span></span><br><span class="line"><span class="hljs-comment">// George is eating! George is pounding its chest!</span></span><br><span class="line"><span class="hljs-comment">// George is waking up! George is pounding its chest! George is eating! George is going to sleep!</span></span><br></pre></td></tr></tbody></table></figure><br><em>ES6 &#x51FA;&#x73B0;&#x4E4B;&#x524D;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684; JavaScript</em><p></p>
+<p>&#x770B;&#x5B8C;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4EE5;&#x540E;&#x4F60;&#x4EEC;&#x4E00;&#x5B9A;&#x5728;&#x60F3;&#xFF0C;&#x7B49;&#x4E00;&#x4E0B;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x600E;&#x4E48;&#x6CA1;&#x6709; <strong>class</strong>&#xFF1F;&#x4E5F;&#x6CA1;&#x6709; <strong>constructor</strong>&#xFF1F;&#x8FD9;&#x4E9B;&#x53E4;&#x8001;&#x7684; <strong>JavaScript</strong> &#x4EE3;&#x7801;&#x662F;&#x5982;&#x4F55;&#x505A;&#x5230;&#x5728;&#x4E0D;&#x4F7F;&#x7528; <strong>extends</strong> &#x548C; <strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x7684;&#xFF1F;&#x8FD9;&#x6837;&#x5199;&#x4EE3;&#x7801;&#x4E0D;&#x662F;&#x5F88;&#x4E11;&#x561B;&#xFF1F;</p>
+<p>&#x6CA1;&#x9519;&#x513F;&#x6211;&#x5B8C;&#x5168;&#x7406;&#x89E3;&#x4F60;&#x4EEC;&#x7684;&#x611F;&#x53D7;&#x3002;&#x5F88;&#x4E0D;&#x5E78;&#xFF0C;JavaScript &#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x4ECE;&#x672A;&#x53D8;&#x8FC7;&#x3002;&#x4E0D;&#x7BA1;&#x6709;&#x591A;&#x5C11;&#x65B0;&#x7279;&#x6027;&#x88AB;&#x6DFB;&#x52A0;&#xFF0C;&#x5B83;&#x7684;&#x5E95;&#x5C42;&#x4ECD;&#x7136;&#x662F;&#x8001;&#x6837;&#x5B50;&#x3002;<strong>class</strong>&#x3001;<strong>constructor</strong>&#x3001;<strong>super</strong> &#x548C; <strong>extends</strong> &#x7B49;&#x5173;&#x952E;&#x5B57;&#x53EA;&#x662F;&#x4E3A;&#x4ED6;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x4EE5;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#x4E5F;&#x66F4;&#x6613;&#x4E8E;&#x7F16;&#x5199;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x6765;&#x89E3;&#x91CA;&#x4E00;&#x4E0B; <strong>ES6</strong> &#x54EA;&#x4E9B;&#x4EE3;&#x7801;&#x5BF9;&#x5E94;&#x4E86;&#x4F20;&#x7EDF;&#x7684; JavaScript &#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x521D;&#x6B21;&#x63A5;&#x89E6; JavaScript &#x4E2D;&#x7684; <strong>prototype</strong> &#x548C; <strong>inheritance</strong> &#x6982;&#x5FF5;&#xFF0C;&#x8BF7;&#x5148;&#x9605;&#x8BFB;&#x4E0B;&#x9762;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#x540E;&#x518D;&#x7EE7;&#x7EED;&#x9605;&#x8BFB;&#x672C;&#x6587;&#x5269;&#x4E0B;&#x7684;&#x7AE0;&#x8282;&#xFF1A;</p>
+<p><a href="https://hackernoon.com/prototypes-in-javascript-5bba2990e04b" target="_blank" rel="noopener"><img src="/pictures/super-extends/1.png" alt></a></p>
+<p><a href="https://hackernoon.com/inheritance-in-javascript-21d2b82ffa6f" target="_blank" rel="noopener"><img src="/pictures/super-extends/2.png" alt></a></p>
+<p>&#x8FD9;&#x4E24;&#x7BC7;&#x53C2;&#x8003;&#x6587;&#x7AE0;&#x5BF9;&#x4F60;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#x4E0B;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4F1A;&#x6709;&#x5F88;&#x5927;&#x5E2E;&#x52A9;&#x3002;</p>
+<h2 id="ES6-&#x4E0E;&#x4F20;&#x7EDF;-JavaScript-&#x4EE3;&#x7801;&#x5BF9;&#x6BD4;"><a href="#ES6-&#x4E0E;&#x4F20;&#x7EDF;-JavaScript-&#x4EE3;&#x7801;&#x5BF9;&#x6BD4;" class="headerlink" title="ES6 &#x4E0E;&#x4F20;&#x7EDF; JavaScript &#x4EE3;&#x7801;&#x5BF9;&#x6BD4;"></a>ES6 &#x4E0E;&#x4F20;&#x7EDF; JavaScript &#x4EE3;&#x7801;&#x5BF9;&#x6BD4;</h2><p>&#x4E0B;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x56DE;&#x5206;&#x89E3;&#x5BF9;&#x6BD4; ES6 &#x4EE3;&#x7801;&#x4E0E;&#x4F20;&#x7EDF; JavaScript &#x98CE;&#x683C;&#x4EE3;&#x7801;&#x7684;&#x5F02;&#x540C;&#x3002;</p>
+<h3 id="&#x7C7B;&#x58F0;&#x660E;"><a href="#&#x7C7B;&#x58F0;&#x660E;" class="headerlink" title="&#x7C7B;&#x58F0;&#x660E;"></a>&#x7C7B;&#x58F0;&#x660E;</h3><p>&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x5BF9;&#x6BD4;&#x4E86;&#x4E24;&#x79CD;&#x7C7B;&#x58F0;&#x660E;&#x65B9;&#x5F0F;&#x3002;</p>
+<p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ES6 style</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(name, weight) {</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">        <span class="hljs-keyword">this</span>.weight = weight;</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">//...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Check Type of ES6 class</span></span><br><span class="line"><span class="hljs-keyword">typeof</span> Animal <span class="hljs-comment">// function</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Traditional style</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span>(<span class="hljs-params">name, weight</span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-keyword">this</span>.weight = weight;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br><em>&#x7C7B;&#x58F0;&#x660E;&#x5BF9;&#x6BD4;</em><p></p>
+<p><strong>ES6</strong> &#x7684;&#x7C7B;&#x58F0;&#x660E;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <strong>class</strong> &#x5173;&#x952E;&#x5B57;&#xFF0C;&#x7136;&#x540E;&#x5728; <strong>constructor</strong> &#xFF08;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;&#x4E2D;&#x5B9A;&#x4E49;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x3002;&#x800C;&#x5728;&#x4F20;&#x7EDF;&#x7684; JavaScript &#x4E2D;&#x662F;&#x6CA1;&#x6709; <strong>class</strong> &#x8FD9;&#x79CD;&#x4E1C;&#x897F;&#x7684;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x5728; JavaScript &#x5185;&#x90E8; <strong>class</strong> &#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF08;&#x53C2;&#x89C1;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x7B2C; 11 &#x884C;&#xFF09;&#x3002;</p>
+<p>&#x7B2C; 3 &#x884C;&#x7684; <strong>constructor</strong> &#x51FD;&#x6570;&#x8DDF;&#x7B2C; 14 &#x884C;&#x7684;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x7684; <strong>Animal</strong> &#x51FD;&#x6570;&#x5C31;&#x76F8;&#x5F53;&#x4E8E; <strong>constructor</strong> &#x51FD;&#x6570;&#x3002;</p>
+<h3 id="Class-&#x4E2D;&#x7684;&#x65B9;&#x6CD5;"><a href="#Class-&#x4E2D;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="Class &#x4E2D;&#x7684;&#x65B9;&#x6CD5;"></a>Class &#x4E2D;&#x7684;&#x65B9;&#x6CD5;</h3><p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ES6 style</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-comment">// ...</span></span><br><span class="line">    eat() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is eating!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    sleep() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is going to sleep!`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    wakeUp() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is waking up!`</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">// ...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Traditional style</span></span><br><span class="line">Animal.prototype.eat = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is eating!`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Animal.prototype.sleep = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> is going to sleep!`</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><br><em>&#x65B9;&#x6CD5;&#x58F0;&#x660E;&#x5BF9;&#x6BD4;</em><p></p>
+<p>&#x4ECE;&#x7B2C; 4 &#x884C;&#x5230;&#x7B2C; 14 &#x884C;&#x662F; <strong>ES6</strong> &#x98CE;&#x683C;&#x7684;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x4F20;&#x7EDF;&#x7684; JavaScript &#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x8FD9;&#x6837;&#x5199;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x5B58;&#x5728; <strong>class</strong> &#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x6765;&#x8BA9;&#x4F60;&#x8F7B;&#x677E;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x4F20;&#x7EDF;&#x7684; <strong>JavaScript</strong> &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x628A;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x5230; <strong>prototype</strong> &#x4E0A;&#x6765;&#x8FBE;&#x5230;&#x4E3A;&#x7C7B;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x8FD9;&#x4E00;&#x76EE;&#x7684;&#x3002;&#x7B2C; 19 &#x884C;&#x5230;&#x7B2C; 29 &#x884C;&#x662F;&#x4E3A;&#x4F20;&#x7EDF; <strong>JavaScript</strong> &#x7C7B;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x7684;&#x5199;&#x6CD5;&#x3002;</p>
+<h3 id="extends-&#x5728;&#x4F20;&#x7EDF;-JavaScript-&#x4E2D;&#x7684;&#x5BF9;&#x5E94;"><a href="#extends-&#x5728;&#x4F20;&#x7EDF;-JavaScript-&#x4E2D;&#x7684;&#x5BF9;&#x5E94;" class="headerlink" title="extends &#x5728;&#x4F20;&#x7EDF; JavaScript &#x4E2D;&#x7684;&#x5BF9;&#x5E94;"></a>extends &#x5728;&#x4F20;&#x7EDF; JavaScript &#x4E2D;&#x7684;&#x5BF9;&#x5E94;</h3><p>&#x5F53;&#x6211;&#x4EEC;&#x8981;&#x4ECE;<strong>&#x7236;&#x7C7B;</strong>&#x6269;&#x5C55;&#x4E00;&#x4E2A;<strong>&#x5B50;&#x7C7B;</strong>&#x65F6;&#xFF0C;&#x4E24;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x5DEE;&#x5F02;&#x5C31;&#x66F4;&#x5927;&#x4E86;&#x3002;&#x53C2;&#x89C1;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#xFF1A;</p>
+<p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ES6 style</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gorilla</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(name, weight) {</span><br><span class="line">        <span class="hljs-keyword">super</span>(name, weight);</span><br><span class="line">    }</span><br><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Traditional style</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Gorilla</span>(<span class="hljs-params">name, weight</span>) </span>{</span><br><span class="line">    Animal.call(<span class="hljs-keyword">this</span>, name, weight);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype = <span class="hljs-built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Gorilla.prototype.constructor = Gorilla;</span><br></pre></td></tr></tbody></table></figure><br><em>extends &#x5173;&#x952E;&#x5B57;&#x4E0E;&#x4F20;&#x7EDF;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4;</em><p></p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230; <strong>extends</strong> &#x5173;&#x952E;&#x5B57;&#x7528; <strong>ES6</strong> &#x7684;&#x98CE;&#x683C;&#x5904;&#x7406;&#x4E86;&#x4ECE;&#x7236;&#x7C7B; <strong>Animal</strong> &#x6269;&#x5C55;&#x51FA;&#x5B50;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x4E5F;&#x7528;&#x5230;&#x4E86; <strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x6765;&#x786E;&#x4FDD; <strong>Gorilla</strong> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E86; <strong>Animal</strong> &#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x5B83;&#x5C31;&#x80FD;&#x7EE7;&#x627F; <strong>Animal</strong> &#x7684;&#x7279;&#x6027;&#x548C;&#x884C;&#x4E3A;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;<strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x662F;&#x4F5C;&#x4E3A;<strong>&#x51FD;&#x6570;</strong>&#x6765;&#x8C03;&#x7528; <strong>Animal</strong> &#x7C7B;&#x6765;&#x521D;&#x59CB;&#x5316; <strong>Gorilla</strong>&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;<strong>super</strong> &#x7684;&#x4F5C;&#x7528;&#x76F8;&#x5F53;&#x4E8E; <strong>Animal.call(this,&#x2026;)</strong>&#x3002;</p>
+<p>&#x82E5;&#x662F;&#x7528;&#x4F20;&#x7EDF;&#x7684;&#x5199;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#xFF0C;&#x5219;&#x8981;&#x591A;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#x3002;&#x9996;&#x5148;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B; <strong>Gorilla</strong> &#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x7B2C; 10 &#x884C;&#x6240;&#x793A;&#x3002;&#x7531;&#x4E8E; <strong>Gorilla</strong> &#x8981;&#x7EE7;&#x627F; <strong>Animal</strong> &#x7684;&#x7279;&#x6027;&#x548C;&#x884C;&#x4E3A;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x5728; <strong>Gorilla</strong> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528; <strong>Animal</strong> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x7B2C; 11 &#x884C;&#x6240;&#x793A;&#xFF0C;&#x8FD9;&#x884C;&#x4E0E;&#x7B2C; 4 &#x884C;&#x7684;&#x529F;&#x80FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x53EA;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x7684;&#x4F20;&#x9012; <strong>&#x201C;this&#x201D;</strong> &#x5F15;&#x7528;&#x7ED9; <strong>Animal</strong> &#x7C7B;&#x4EE5;&#x4FDD;&#x8BC1;&#x8C03;&#x7528;&#x662F;&#x5728; <strong>Gorilla</strong> &#x4E2D;&#x53D1;&#x751F;&#x7684;&#x3002;</p>
+<p>&#x4E0D;&#x4EC5;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5C06; <strong>Gorilla</strong> &#x51FD;&#x6570;&#x7684; <strong>prototype</strong> &#x8BBE;&#x7F6E;&#x4E3A;&#x4E00;&#x4E2A;&#x4ECE; <strong>Animal</strong> &#x7684; <strong>prototype</strong> &#x521B;&#x5EFA;&#x7684;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x7B2C; 11 &#x884C;&#x6240;&#x793A;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x91CD;&#x5199;&#x4E86; <strong>Gorilla</strong> &#x7684; <strong>prototype</strong> &#x5BF9;&#x8C61;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x4EE3;&#x7801;&#x7B2C; 15 &#x884C;&#x4E2D;&#x663E;&#x5F0F;&#x7684;&#x8BBE;&#x7F6E; <strong>Gorilla</strong> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x6B65;&#x9AA4;&#x6211;&#x4EEC;&#x5C06; <strong>Gorilla</strong> &#x7C7B;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A; <strong>Animal</strong> &#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
+<h3 id="super-&#x5728;&#x4F20;&#x7EDF;-JavaScript-&#x4E2D;&#x7684;&#x5BF9;&#x5E94;"><a href="#super-&#x5728;&#x4F20;&#x7EDF;-JavaScript-&#x4E2D;&#x7684;&#x5BF9;&#x5E94;" class="headerlink" title="super &#x5728;&#x4F20;&#x7EDF; JavaScript &#x4E2D;&#x7684;&#x5BF9;&#x5E94;"></a>super &#x5728;&#x4F20;&#x7EDF; JavaScript &#x4E2D;&#x7684;&#x5BF9;&#x5E94;</h3><p>&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x89C1;&#x8BC6;&#x8FC7; <strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x7684;&#x4E00;&#x79CD;&#x5BF9;&#x5E94;&#xFF0C;&#x5373;&#xFF0C;&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x7B2C; 4 &#x884C;&#x548C;&#x7B2C; 19 &#x884C;&#xFF0C;<strong>super</strong> &#x88AB;&#x7528;&#x4F5C;<strong>&#x51FD;&#x6570;</strong>&#x3002;</p>
+<p></p><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ES6 style</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gorilla</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span> </span>{</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(name, weight) {</span><br><span class="line">        <span class="hljs-keyword">super</span>(name, weight);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    showVigour() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">super</span>.eat()}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span>`</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    dailyRoutine() {</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">super</span>.wakeUp()}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span> <span class="hljs-subst">${<span class="hljs-keyword">super</span>.eat()}</span> <span class="hljs-subst">${<span class="hljs-keyword">super</span>.sleep()}</span>`</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">// ...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Traditional style</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Gorilla</span>(<span class="hljs-params">name, weight</span>) </span>{</span><br><span class="line">    Animal.call(<span class="hljs-keyword">this</span>, name, weight);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype = <span class="hljs-built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Gorilla.prototype.constructor = Gorilla;</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.showVigour = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${Animal.prototype.eat.call(<span class="hljs-keyword">this</span>)}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.poundChest()}</span>`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Gorilla.prototype.dailyRoutine = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br></pre></td></tr></tbody></table></figure><br><em>super &#x5173;&#x952E;&#x5B57;&#x4E0E;&#x4F20;&#x7EDF;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4;</em><p></p>
+<p><strong>super</strong> &#x5173;&#x952E;&#x5B57;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x7B2C; 8 &#x884C;&#x548C;&#x7B2C; 12 &#x884C;&#x8FD9;&#x6837;&#x8C03;&#x7528; <strong>Animal</strong> &#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4EE3;&#x7801;&#x7B2C; 26 &#x884C;&#x5C55;&#x793A;&#x4E86;&#x5728;&#x4F20;&#x7EDF;&#x7684; JavaScript &#x4E2D;&#x5B9E;&#x73B0;&#x540C;&#x6837;&#x7684;&#x76EE;&#x7684;&#xFF0C;<strong>super</strong> &#x5B9E;&#x4F8B;&#x76F8;&#x5F53;&#x4E8E;&#x4F20;&#x7EDF;&#x5199;&#x6CD5;&#x7684; <strong>ParentClassName.prototype.methodName.call(this, &#x2026;)</strong>&#x3002;&#x5373;&#x4F20;&#x7EDF;&#x5199;&#x6CD5;&#x9700;&#x8981;&#x7F16;&#x5199;&#x5927;&#x91CF;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x786E;&#x4FDD;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<h2 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h2><p>&#x6211;&#x5F88;&#x786E;&#x5B9A;&#xFF0C;&#x4F60;&#x4EEC;&#x5728;&#x4E86;&#x89E3;&#x4E86;&#x4F20;&#x7EDF;&#x7684;&#x5199;&#x6CD5;&#x662F;&#x591A;&#x4E48;&#x7684;&#x590D;&#x6742;&#x4E4B;&#x540E;&#x4E00;&#x5B9A;&#x4F1A;&#x6BEB;&#x4E0D;&#x72B9;&#x8C6B;&#x7684;&#x9009;&#x62E9; <strong>ES6</strong> &#x7684;<strong>&#x7C7B;</strong>&#x548C;<strong>&#x7EE7;&#x627F;</strong>&#x7279;&#x6027;&#x3002;&#x800C;&#x4E14;&#xFF0C;Chrome &#x548C; Firefox &#x5DF2;&#x7ECF;&#x652F;&#x6301;&#x4E86; ES6&#xFF0C;&#x4E0D;&#x8FC7;&#x4E3A;&#x4E86;&#x786E;&#x4FDD; ES6 &#x7279;&#x6027;&#x5728;&#x6240;&#x6709;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x90FD;&#x80FD;&#x6267;&#x884C;&#xFF0C;&#x4F60;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E2A; babel &#x8F6C;&#x8BD1;&#x5668;&#x6765;&#x628A; ES6 &#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x6210; ES5 &#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x795D;&#x7F16;&#x7801;&#x5FEB;&#x4E50;&#xFF01;&#x1F604;</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Web-%E5%BC%80%E5%8F%91/">#Web 开发</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Super/">#Super</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Extends/">#Extends</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JS%E5%AF%B9%E8%B1%A1/">#JS对象</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/06/25/understanding-promise/">「译」理解 JavaScript 中的 Promise</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/04/01/web-components-hero-1/">「译」Web Components：入门到精通 (1)</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 w.z&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">
+                    
+                    Firefox
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

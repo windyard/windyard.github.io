@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>标签: 硬件加速 - Windyard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Windyard">
+<meta property="og:url" content="https://windyard.com/tags/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/index.html">
+<meta property="og:site_name" content="Windyard">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="w.z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.jpg">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#硬件加速</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/03/26/css-hardware-accelerate/" itemprop="url">「译」使用 CSS 硬件加速提升网站性能</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-26T11:59:59.000Z" itemprop="datePublished">3月 26 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 932 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p><strong><em> &#x4F5C;&#x8005;&#xFF1A; <a href="https://blog.teamtreehouse.com/author/guillermohernandez" target="_blank" rel="noopener">Guil Hernandez</a> </em></strong><br><strong><em> &#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css" target="_blank" rel="noopener">Increase Your Site&#x2019;s Performance with Hardware-Accelerated CSS</a> </em></strong></p>
+<p>&#x4F60;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x56FE;&#x50CF;&#x76F8;&#x5173;&#x7684; CSS &#x7279;&#x6027;&#x4EA4;&#x7ED9; GPU(&#x56FE;&#x50CF;&#x5904;&#x7406;&#x5355;&#x5143;) &#x5904;&#x7406;&#xFF0C;&#x4EE5;&#x5229;&#x7528;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x83B7;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x5417;&#xFF1F;</p>
+<p>&#x5F53;&#x4ECA;&#x7684;&#x5927;&#x591A;&#x6570;&#x7535;&#x8111;&#x90FD;&#x6709;&#x53EF;&#x7528;&#x4E8E;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x7684;&#x663E;&#x5361;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E9B; GPU &#x8D44;&#x6E90;&#x53BB;&#x5904;&#x7406;&#x90A3;&#x4E9B;&#x6BD4;&#x8F83;&#x8017;&#x6027;&#x80FD;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x7684;&#x7F51;&#x7AD9;&#x548C;&#x5E94;&#x7528;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x5C31;&#x80FD;&#x83B7;&#x5F97;&#x6BD4;&#x5355;&#x7EAF;&#x7528; CPU &#x5904;&#x7406;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#x8868;&#x73B0;&#x3002;</p>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x8BB2;&#x5230;&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x7684; CSS &#x786C;&#x4EF6;&#x52A0;&#x901F;&#x3002;</p>
+<h2 id="&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;-CSS-&#x786C;&#x4EF6;&#x52A0;&#x901F;"><a href="#&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;-CSS-&#x786C;&#x4EF6;&#x52A0;&#x901F;" class="headerlink" title="&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684; CSS &#x786C;&#x4EF6;&#x52A0;&#x901F;"></a><strong>&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;</strong>&#x4E2D;&#x7684; CSS &#x786C;&#x4EF6;&#x52A0;&#x901F;</h2><p>&#x4F60;&#x6709;&#x6CA1;&#x6709;&#x60F3;&#x8FC7;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x4E9B; CSS &#x52A8;&#x753B;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x770B;&#x8D77;&#x6765;&#x6BD4;&#x5176;&#x4ED6;&#x7684;&#x66F4;&#x6D41;&#x7545;&#x4E9B;&#xFF1F;</p>
+<p>CSS animations, transforms &#x548C; transitions &#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x4F1A;&#x542F;&#x7528; GPU &#x52A0;&#x901F;&#xFF0C;&#x800C;&#x662F;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x5185;&#x90E8;&#x7684;&#xFF08;&#x6BD4;&#x8F83;&#x6162;&#x7684;&#xFF09;&#x8F6F;&#x4EF6;&#x5F15;&#x64CE;&#x6E32;&#x67D3;&#x3002;&#x90A3;&#x4E48;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x5F3A;&#x5236;&#x6D4F;&#x89C8;&#x5668;&#x5207;&#x6362;&#x5230; GPU &#x6A21;&#x5F0F;&#x5462;&#xFF1F;&#x8BB8;&#x591A;&#x6D4F;&#x89C8;&#x5668;&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684; CSS &#x89C4;&#x5219;&#x542F;&#x7528; GPU &#x52A0;&#x901F;&#x3002;</p>
+<p>&#x5F53;&#x524D;&#xFF0C;Chrome, Firefox, Safari, IE9+ &#x548C;&#x6700;&#x65B0;&#x7248;&#x7684; Opera &#x90FD;&#x652F;&#x6301;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#xFF1B;&#x5B83;&#x4EEC;&#x53EA;&#x6709;&#x5728;&#x68C0;&#x6D4B;&#x5230;&#x67D0;&#x4E2A; DOM &#x5143;&#x7D20;&#x53EF;&#x80FD;&#x4F1A;&#x4ECE;&#x4E2D;&#x83B7;&#x76CA;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x5E94;&#x7528;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x3002;&#x5728; CSS &#x4E2D;&#xFF0C;&#x6700;&#x663E;&#x773C;&#x7684;&#x8FF9;&#x8C61;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x5143;&#x7D20;&#x4F7F;&#x7528;&#x4E86; 3D &#x53D8;&#x6362;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> {</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">250px</span>,<span class="hljs-number">250px</span>,<span class="hljs-number">250px</span>)</span><br><span class="line">   <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">250px</span>,<span class="hljs-number">250px</span>,<span class="hljs-number">250px</span>,-<span class="hljs-number">120deg</span>)</span><br><span class="line">   <span class="hljs-built_in">scale3d</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x67D0;&#x4E9B;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x9700;&#x8981; 3D &#x53D8;&#x6362;&#x4F46;&#x4ECD;&#x7136;&#x60F3;&#x5229;&#x7528;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x6709;&#x51E0;&#x4E2A;&#x975E;&#x5E38;&#x987A;&#x624B;&#x7684; CSS &#x7279;&#x6027;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x89E6;&#x53D1;&#x6D4F;&#x89C8;&#x5668;&#x7684; GPU &#x52A0;&#x901F;&#x3002;</p>
+<p>&#x5C3D;&#x7BA1;&#x6211;&#x4EEC;&#x7684;&#x5143;&#x7D20;&#x5E76;&#x4E0D;&#x662F;&#x5728; 3D &#x7A7A;&#x95F4;&#x4E2D;&#x505A;&#x52A8;&#x753B;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x542F;&#x7528; 3D &#x6E32;&#x67D3;&#x3002;&#x95F2;&#x8BDD;&#x4F11;&#x63D0;&#xFF0C;<code>transform: translateZ(0);</code> &#x58F0;&#x660E;&#x5728;&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x90FD;&#x4F1A;&#x89E6;&#x53D1; GPU &#x52A0;&#x901F;&#x3002;&#x770B;&#x8D77;&#x6765;&#x8FD9;&#x662F;&#x89E6;&#x53D1; GPU &#x52A0;&#x901F;&#x7684;&#x6700;&#x6709;&#x6548;&#x7684;&#x65B9;&#x5F0F;&#x4E86;&#xFF08;&#x6DFB;&#x52A0;&#x4E86;&#x6240;&#x6709;&#x6D4F;&#x89C8;&#x5668;&#x524D;&#x7F00;&#xFF09;&#xFF1A;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> {</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translateZ</span>(<span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translateZ</span>(<span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translateZ</span>(<span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">-o-transform</span>: <span class="hljs-built_in">translateZ</span>(<span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateZ</span>(<span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5728; Chrome &#x548C; Safari &#x4E2D;&#x4F7F;&#x7528; CSS transforms &#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x95EA;&#x70C1;&#x3002;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x58F0;&#x660E;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> {</span><br><span class="line">   <span class="hljs-attribute">-webkit-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-moz-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">-ms-backface-visibility</span>: hidden;</span><br><span class="line">   <span class="hljs-attribute">backface-visibility</span>: hidden;</span><br><span class="line"></span><br><span class="line">   <span class="hljs-attribute">-webkit-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-moz-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">-ms-perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-attribute">perspective</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">   <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x53E6;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x7528;&#x5728; Webkit &#x5185;&#x6838;&#x7684;&#x684C;&#x9762;&#x548C;&#x624B;&#x673A;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528; <code>translate3d</code>&#xFF1A;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.cube</span> {</span><br><span class="line">   <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">  <span class="hljs-comment">/* Other transform properties here */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x539F;&#x751F;&#x7684;&#x624B;&#x673A;&#x5E94;&#x7528;&#x4E00;&#x76F4;&#x5728;&#x5229;&#x7528; GPU &#x52A0;&#x901F;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5927;&#x5BB6;&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x7684;&#x5370;&#x8C61;&#x90FD;&#x662F;&#x539F;&#x751F;&#x5E94;&#x7528;&#x8981;&#x6BD4;&#x7F51;&#x9875;&#x5E94;&#x7528;&#x66F4;&#x6D41;&#x7545;&#x4E00;&#x4E9B;&#x3002;&#x5728;&#x624B;&#x673A;&#x4E0A;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x6765;&#x964D;&#x4F4E;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#x662F;&#x975E;&#x5E38;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;</p>
+<h2 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h2><p>&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x7684;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x53EA;&#x7528;&#x4E8E;&#x9700;&#x8981;&#x52A8;&#x753B;&#x7684;&#x5143;&#x7D20;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8; 2D &#x53D8;&#x6362;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x4E0D;&#x8FC7;&#x628A;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7EDD;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x4E3B;&#x610F;&#x3002;</p>
+<p>&#x8C28;&#x614E;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x4F60;&#x9047;&#x5230;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x65F6;&#x624D;&#x9700;&#x8981;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x6EE5;&#x7528; GPU &#x52A0;&#x901F;&#x5C06;&#x5BFC;&#x81F4;&#x4E25;&#x91CD;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x4F1A;&#x5360;&#x7528;&#x5927;&#x91CF;&#x5185;&#x5B58; -- &#x800C;&#x4E14;&#x8FD8;&#x4F1A;&#x5F71;&#x54CD;&#x7535;&#x6C60;&#x7EED;&#x822A;&#x3002;</p>
+<p>&#x4F60;&#x5728;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x8FC7;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5417;&#xFF1F;&#x5982;&#x679C;&#x7528;&#x8FC7;&#xFF0C;&#x8BF7;&#x5206;&#x4EAB;&#x4E00;&#x4E0B;&#x54EA;&#x4E9B;&#x65B9;&#x6CD5;&#x6700;&#x6709;&#x6548;&#x6027;&#x80FD;&#x6700;&#x597D;&#x3002;</p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 w.z&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">
+                    
+                    Firefox
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

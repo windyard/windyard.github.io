@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>标签: SVG 动画 - Windyard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Windyard">
+<meta property="og:url" content="https://windyard.com/tags/SVG-%E5%8A%A8%E7%94%BB/index.html">
+<meta property="og:site_name" content="Windyard">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="w.z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.jpg">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#SVG 动画</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/01/30/svg-line-animation/" itemprop="url">「译」如何制作 SVG 线条动画</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-30T10:48:04.000Z" itemprop="datePublished">1月 30 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 833 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p><strong><em>&#x4F5C;&#x8005;&#xFF1A;<a href="https://css-tricks.com/author/chriscoyier/" target="_blank" rel="noopener">Chris Coyier</a></em></strong><br><strong><em>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://css-tricks.com/svg-line-animation-works/" target="_blank" rel="noopener">Write Your First Service Worker in 5 Minutes</a></em></strong></p>
+<p>&#x6211;&#x6562;&#x8BF4;&#x4F60;&#x4EEC;&#x90FD;&#x89C1;&#x8FC7;&#x90A3;&#x79CD;&#x770B;&#x8D77;&#x6765;&#x5982;&#x540C;&#x6B63;&#x5728;&#x5B9E;&#x65F6;&#x7ED8;&#x5236; SVG &#x56FE;&#x5F62;&#x7684; SVG &#x5C0F;&#x52A8;&#x753B;&#x3002;&#x6548;&#x679C;&#x975E;&#x5E38;&#x7684;&#x8D5E;&#x3002;Jake Archibald &#x662F;&#x8FD9;&#x95E8;&#x6280;&#x5DE7;&#x7684;&#x5148;&#x9A71;&#xFF0C;&#x4ED6;&#x8FD8;&#x5199;&#x4E86;<a href="https://jakearchibald.com/2013/animated-line-drawing-svg/" target="_blank" rel="noopener">&#x4E00;&#x7BC7;&#x8D85;&#x7EA7;&#x68D2;&#x7684;&#x5F15;&#x4EBA;&#x5165;&#x80DC;&#x7684;&#x535A;&#x5BA2;</a>&#x6765;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8FD9;&#x79CD;&#x6548;&#x679C;&#x3002;Brian Suda &#x4E5F;&#x5728; <a href="https://24ways.org/2013/animating-vectors-with-svg/" target="_blank" rel="noopener">24 Ways</a> &#x4E0A;&#x9762;&#x5199;&#x4E86;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x3002;Polygon &#x4F7F;&#x7528;&#x8FD9;&#x9879;&#x6280;&#x672F;&#x6765;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684;&#x8BBE;&#x8BA1;&#x6DFB;&#x52A0;&#x60CA;&#x8273;&#x7684;&#x6548;&#x679C;&#x5E76;<a href="https://product.voxmedia.com/post/68085482982/polygon-feature-design-svg-animations-for-fun-and" target="_blank" rel="noopener">&#x5199;&#x4E86;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x6765;&#x8BF4;&#x660E;</a>&#x3002;Codrops &#x4E0A;&#x6709;<a href="http://tympanus.net/Development/SVGDrawingAnimation/" target="_blank" rel="noopener">&#x4E00;&#x4E9B;&#x7B80;&#x6D01;&#x7684;&#x4F8B;&#x5B50;</a>&#x3002;</p>
+<p>&#x6211;&#x57FA;&#x672C;&#x4E0A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x53EF;&#x4EE5;&#x518D;&#x8865;&#x5145;&#x4E86;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x6211;&#x7684;&#x5927;&#x8111;&#x521A;&#x521A;&#x5F04;&#x660E;&#x767D;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x60F3;&#x518D;&#x89E3;&#x91CA;&#x4E00;&#x904D;&#x6211;&#x7684;&#x7406;&#x89E3;&#x3002;</p>
+<h2 id="1-&#x4F60;&#x6709;&#x4E00;&#x4E2A;-SVG-&#x56FE;&#x5F62;"><a href="#1-&#x4F60;&#x6709;&#x4E00;&#x4E2A;-SVG-&#x56FE;&#x5F62;" class="headerlink" title="1. &#x4F60;&#x6709;&#x4E00;&#x4E2A; SVG &#x56FE;&#x5F62;"></a>1. &#x4F60;&#x6709;&#x4E00;&#x4E2A; SVG &#x56FE;&#x5F62;</h2><p><img src="/pictures/svg-line-animation/svg-shape.png" alt></p>
+<h2 id="2-&#x56FE;&#x5F62;&#x5FC5;&#x987B;&#x6709;&#x7EBF;&#x6761;&#xFF08;stroke&#xFF09;"><a href="#2-&#x56FE;&#x5F62;&#x5FC5;&#x987B;&#x6709;&#x7EBF;&#x6761;&#xFF08;stroke&#xFF09;" class="headerlink" title="2. &#x56FE;&#x5F62;&#x5FC5;&#x987B;&#x6709;&#x7EBF;&#x6761;&#xFF08;stroke&#xFF09;"></a>2. &#x56FE;&#x5F62;&#x5FC5;&#x987B;&#x6709;&#x7EBF;&#x6761;&#xFF08;stroke&#xFF09;</h2><p><img src="/pictures/svg-line-animation/svg-path.png" alt></p>
+<h2 id="3-&#x7EBF;&#x6761;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x7EBF;&#x6BB5;&#x6A21;&#x5F0F;"><a href="#3-&#x7EBF;&#x6761;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x7EBF;&#x6BB5;&#x6A21;&#x5F0F;" class="headerlink" title="3. &#x7EBF;&#x6761;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x7EBF;&#x6BB5;&#x6A21;&#x5F0F;"></a>3. &#x7EBF;&#x6761;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x7EBF;&#x6BB5;&#x6A21;&#x5F0F;</h2><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528; Illustrator &#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x7A0B;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x7528; CSS &#x6765;&#x9009;&#x4E2D;&#x56FE;&#x5F62;&#x8DEF;&#x5F84;&#xFF08;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x7528;&#x7684;&#x662F; inline SVG &#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A; <code>&amp;lt;object&amp;gt;</code> &#x5143;&#x7D20;&#xFF09;&#x5E76;&#x5E94;&#x7528;&#x7EBF;&#x6BB5;&#x6837;&#x5F0F;&#x3002;</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">...</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;path&quot;</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">&quot;#000000&quot;</span> <span class="hljs-attr">...</span> &gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.path</span> {</span><br><span class="line">  <span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">20</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x8BBE;&#x7F6E;&#x4E86;&#x957F;&#x5EA6;&#x4E3A; 20px &#x7684;&#x7EBF;&#x6BB5;&#x6837;&#x5F0F;&#x3002;</p>
+<p><img src="/pictures/svg-line-animation/dashed-shape.png" alt></p>
+<h2 id="4-&#x7EBF;&#x6BB5;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x66F4;&#x957F;&#x4E00;&#x70B9;&#x2026;"><a href="#4-&#x7EBF;&#x6BB5;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x66F4;&#x957F;&#x4E00;&#x70B9;&#x2026;" class="headerlink" title="4. &#x7EBF;&#x6BB5;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x66F4;&#x957F;&#x4E00;&#x70B9;&#x2026;"></a>4. &#x7EBF;&#x6BB5;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x66F4;&#x957F;&#x4E00;&#x70B9;&#x2026;</h2><figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.path</span> {</span><br><span class="line">  <span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">100</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="/pictures/svg-line-animation/long-dashes.png" alt></p>
+<h2 id="5-&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;-&#x201C;offset&#x201D;-&#x8FD9;&#x4E9B;&#x7EBF;&#x6BB5;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BA9;&#x5B83;&#x4EEC;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;"><a href="#5-&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;-&#x201C;offset&#x201D;-&#x8FD9;&#x4E9B;&#x7EBF;&#x6BB5;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BA9;&#x5B83;&#x4EEC;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;" class="headerlink" title="5. &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5; &#x201C;offset&#x201D; &#x8FD9;&#x4E9B;&#x7EBF;&#x6BB5;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BA9;&#x5B83;&#x4EEC;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;"></a>5. &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5; &#x201C;offset&#x201D; &#x8FD9;&#x4E9B;&#x7EBF;&#x6BB5;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BA9;&#x5B83;&#x4EEC;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;</h2><p>&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E9B;&#x7EBF;&#x6BB5;&#x7684; offset &#x52A8;&#x753B;&#x4EE5;&#x540E;&#x7684;&#x6548;&#x679C;&#xFF1A;</p>
+<p><img src="/pictures/svg-line-animation/animate-stroke.gif" alt></p>
+<p>&#x5B9E;&#x73B0;&#x8D77;&#x6765;&#x5F88;&#x7B80;&#x5355;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.path</span> {</span><br><span class="line">  <span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">100</span>;</span><br><span class="line">  <span class="hljs-attribute">animation</span>: dash <span class="hljs-number">5s</span> linear;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">@keyframes</span> dash {</span><br><span class="line">  <span class="hljs-selector-tag">to</span> {</span><br><span class="line">    <span class="hljs-attribute">stroke-dashoffset</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="6-&#x8BBE;&#x60F3;&#x4E00;&#x4E0B;&#x5355;&#x4E2A;&#x7EBF;&#x6BB5;&#x957F;&#x5EA6;&#x8DB3;&#x4EE5;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;"><a href="#6-&#x8BBE;&#x60F3;&#x4E00;&#x4E0B;&#x5355;&#x4E2A;&#x7EBF;&#x6BB5;&#x957F;&#x5EA6;&#x8DB3;&#x4EE5;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;" class="headerlink" title="6. &#x8BBE;&#x60F3;&#x4E00;&#x4E0B;&#x5355;&#x4E2A;&#x7EBF;&#x6BB5;&#x957F;&#x5EA6;&#x8DB3;&#x4EE5;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;"></a>6. &#x8BBE;&#x60F3;&#x4E00;&#x4E0B;&#x5355;&#x4E2A;&#x7EBF;&#x6BB5;&#x957F;&#x5EA6;&#x8DB3;&#x4EE5;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;</h2><p>&#x8FD9;&#x4E2A;&#x5C31;&#x4E0D;&#x7528;&#x653E;&#x56FE;&#x4E86;&#xFF0C;&#x5B83;&#x770B;&#x8D77;&#x6765;&#x5C31;&#x662F;&#x56FE;&#x5F62;&#x6CA1;&#x6709;&#x7EBF;&#x6BB5;&#x5316;&#x7684;&#x6837;&#x5B50;&#x3002;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x628A; <code>stroke-dasharry</code> &#x8BBE;&#x7F6E;&#x6210;&#x4E00;&#x4E2A;&#x6BD4;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x66F4;&#x957F;&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
+<h2 id="7-&#x73B0;&#x5728;&#x7ED9;&#x7EBF;&#x6761;&#x8BBE;&#x7F6E;-offset&#xFF0C;&#x8BA9;&#x5B83;&#x5B8C;&#x5168;&#x6D88;&#x5931;&#x5728;&#x56FE;&#x5F62;&#x8303;&#x56F4;&#x5185;&#x800C;&#x4E0D;&#x662F;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x3002;"><a href="#7-&#x73B0;&#x5728;&#x7ED9;&#x7EBF;&#x6761;&#x8BBE;&#x7F6E;-offset&#xFF0C;&#x8BA9;&#x5B83;&#x5B8C;&#x5168;&#x6D88;&#x5931;&#x5728;&#x56FE;&#x5F62;&#x8303;&#x56F4;&#x5185;&#x800C;&#x4E0D;&#x662F;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x3002;" class="headerlink" title="7. &#x73B0;&#x5728;&#x7ED9;&#x7EBF;&#x6761;&#x8BBE;&#x7F6E; offset&#xFF0C;&#x8BA9;&#x5B83;&#x5B8C;&#x5168;&#x6D88;&#x5931;&#x5728;&#x56FE;&#x5F62;&#x8303;&#x56F4;&#x5185;&#x800C;&#x4E0D;&#x662F;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x3002;"></a>7. &#x73B0;&#x5728;&#x7ED9;&#x7EBF;&#x6761;&#x8BBE;&#x7F6E; offset&#xFF0C;&#x8BA9;&#x5B83;&#x5B8C;&#x5168;&#x6D88;&#x5931;&#x5728;&#x56FE;&#x5F62;&#x8303;&#x56F4;&#x5185;&#x800C;&#x4E0D;&#x662F;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x3002;</h2><p>&#x73B0;&#x5728;&#x6574;&#x4E2A;&#x56FE;&#x5F62;&#x770B;&#x8D77;&#x6765;&#x4EFF;&#x4F5B;&#x4E0D;&#x5B58;&#x5728;&#x3002;</p>
+<h2 id="8-&#x73B0;&#x5728;&#x52A8;&#x753B;-offset-&#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A;-0"><a href="#8-&#x73B0;&#x5728;&#x52A8;&#x753B;-offset-&#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A;-0" class="headerlink" title="8. &#x73B0;&#x5728;&#x52A8;&#x753B; offset &#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A; 0"></a>8. &#x73B0;&#x5728;&#x52A8;&#x753B; offset &#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A; 0</h2><p><img src="/pictures/svg-line-animation/animate-stroke-full.gif" alt></p>
+<p>&#x5982;&#x679C;&#x662F;&#x4F7F;&#x7528; CSS&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06; <code>animation-fill-mode</code> &#x8BBE;&#x7F6E;&#x4E3A; <code>forwards</code>&#xFF0C;&#x8FD9;&#x6837;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x65F6;&#x4F1A;&#x4FDD;&#x6301;&#x5728;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x3002;</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.path</span> {</span><br><span class="line">  <span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">  <span class="hljs-attribute">stroke-dashoffset</span>: <span class="hljs-number">1000</span>;</span><br><span class="line">  <span class="hljs-attribute">animation</span>: dash <span class="hljs-number">5s</span> linear forwards;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">@keyframes</span> dash {</span><br><span class="line">  <span class="hljs-selector-tag">to</span> {</span><br><span class="line">    <span class="hljs-attribute">stroke-dashoffset</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x9F50;&#x6D3B;&#x513F;&#xFF01;</p>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;-JavaScript&#xFF1F;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;-JavaScript&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528; JavaScript&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528; JavaScript&#xFF1F;</h2><p>&#x5927;&#x591A;&#x6570;&#x4F60;&#x89C1;&#x5230;&#x7684; SVG &#x7EBF;&#x6761;&#x52A8;&#x753B;&#x90FD;&#x4F7F;&#x7528;&#x4E86; JavaScript&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x5F88;&#x96BE;&#x77E5;&#x9053;&#x56FE;&#x5F62;&#x7684;&#x5177;&#x4F53;&#x957F;&#x5EA6;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x4F8B;&#x5B50;&#x4E2D;&#x4F7F;&#x7528; <code>1000</code> &#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x521A;&#x5DE7;&#x5C31;&#x662F;&#x56FE;&#x5F62;&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x7528; JavaScript &#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x957F;&#x5EA6;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;.path&apos;</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> length = path.getTotalLength();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x968F;&#x5FC3;&#x6240;&#x6B32;&#x7684;&#x4F7F;&#x7528;&#x4E86;&#x3002;&#x672C;&#x6587;&#x5F00;&#x5934;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x6587;&#x7AE0;&#x4E2D;&#x6709;&#x66F4;&#x591A;&#x66F4;&#x6DF1;&#x5165;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x90A3;&#x4E9B;&#x5185;&#x5BB9;&#x53BB;&#x5B9E;&#x73B0;&#x66F4;&#x9177;&#x70AB;&#x7684;&#x6548;&#x679C;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x53EA;&#x662F;&#x6982;&#x62EC;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x8981;&#x70B9;&#xFF0C;&#x6216;&#x8BB8;&#x4E5F;&#x80FD;&#x5E2E;&#x52A9;&#x4F60;&#x609F;&#x901A; SVG &#x7EBF;&#x6761;&#x52A8;&#x753B;&#x3002;</p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 w.z&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="Firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">
+                    
+                    Firefox
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
