@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windyard.com/2019/06/25/understanding-promise/</loc>
+    
+    <lastmod>2020-03-23T01:14:30.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://windyard.com/2019/04/01/web-components-hero-1/</loc>
     
     <lastmod>2020-03-23T01:11:27.436Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>https://windyard.com/2020/01/30/svg-line-animation/</loc>
     
     <lastmod>2020-03-22T16:55:38.543Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/06/25/understanding-promise/</loc>
-    
-    <lastmod>2019-07-24T15:25:29.260Z</lastmod>
     
   </url>
   
