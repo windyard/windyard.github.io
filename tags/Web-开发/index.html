@@ -5,8 +5,9 @@
 <title>标签: Web 开发 - Windyard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css"> -->
 
+<link rel="icon" href="/favicon.jpg">
 
 
 
@@ -26,10 +27,7 @@
 
 
 
-<link rel="icon" href="/favicon.jpg">
 
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
 
@@ -127,8 +125,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p><strong><em>&#x4F5C;&#x8005;&#xFF1A;<a href="https://medium.com/@anurag.majumdar" target="_blank" rel="noopener">Anurag Majumdar</a></em></strong><br><strong><em>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://medium.com/beginners-guide-to-mobile-web-development/super-and-extends-in-javascript-es6-understanding-the-tough-parts-6120372d3420" target="_blank" rel="noopener">&#x201C;Super&#x201D; and &#x201C;Extends&#x201D; In JavaScript ES6 - Understanding The Tough Parts</a></em></strong></p>
-<p><strong>ES6</strong> &#x7684; <strong>class</strong> &#x8BED;&#x6CD5;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x65B0;&#x7279;&#x6027;&#x8BA9; <strong>JavaScript</strong> &#x663E;&#x5F97;&#x7B80;&#x5355;&#x591A;&#x4E86;&#x3002;&#x4ECA;&#x5929;&#x6211;&#x4EEC;&#x5C06;&#x7ED3;&#x5408; <strong>class</strong> &#x8BED;&#x6CD5;&#x548C;<strong>&#x7EE7;&#x627F;</strong>&#x6982;&#x5FF5;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x3002;&#x731C;&#x7684;&#x6CA1;&#x9519;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x7814;&#x7A76;&#x7684;&#x6B63;&#x662F; <strong>ES6</strong> &#x4E2D;&#x7684; <strong>super</strong> &#x548C; <strong>extends</strong> &#x5173;&#x952E;&#x5B57;&#x3002;&#x5B66;&#x4E60;&#x65B0;&#x7279;&#x6027;&#x6700;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x5728;&#x5B9E;&#x4F8B;&#x4E2D;&#x6DF1;&#x5165;&#x7684;&#x7814;&#x7A76;&#x5B83;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5427;&#xFF01;</p></body></html>
+        <html><head></head><body><p><strong><em>作者：<a href="https://medium.com/@anurag.majumdar" target="_blank" rel="noopener">Anurag Majumdar</a></em></strong><br><strong><em>原文链接：<a href="https://medium.com/beginners-guide-to-mobile-web-development/super-and-extends-in-javascript-es6-understanding-the-tough-parts-6120372d3420" target="_blank" rel="noopener">“Super” and “Extends” In JavaScript ES6 - Understanding The Tough Parts</a></em></strong></p>
+<p><strong>ES6</strong> 的 <strong>class</strong> 语法以及其他新特性让 <strong>JavaScript</strong> 显得简单多了。今天我们将结合 <strong>class</strong> 语法和<strong>继承</strong>概念来分析一些代码。猜的没错，我们要研究的正是 <strong>ES6</strong> 中的 <strong>super</strong> 和 <strong>extends</strong> 关键字。学习新特性最好的方式就是在实例中深入的研究它。让我们开始吧！</p></body></html>
         <p class="article-more-link">
             <a href="/2019/05/27/super-extends-js/#more">阅读更多</a>
         </p>
@@ -137,6 +135,10 @@
     
     
 </article>
+
+
+
+
 
 
 
@@ -177,13 +179,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
 <!-- test if the browser is outdated -->
-<div id="outdated">
+<!-- <div id="outdated">
     <h6>Your browser is out-of-date!</h6>
     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script> -->
+<!-- <script>
     $(document).ready(function () {
         // plugin function, place inside DOM ready function
         outdatedBrowser({
@@ -192,7 +194,7 @@
             lowerThan: 'flex'
         })
     });
-</script>
+</script> -->
 
 <script>
     window.FontAwesomeConfig = {
@@ -207,21 +209,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script>
     MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
     });
 </script>
 
