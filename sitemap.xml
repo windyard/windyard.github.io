@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://windyard.com/2020/01/30/svg-line-animation/</loc>
+    <loc>https://windyard.com/2019/04/01/web-components-hero-1/</loc>
     
-    <lastmod>2020-03-22T16:42:51.226Z</lastmod>
+    <lastmod>2020-03-23T01:11:27.436Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2019/02/08/Use-jquery-in-vue/</loc>
+    
+    <lastmod>2020-03-23T01:11:11.954Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2019/03/31/sw-in-5m/</loc>
+    
+    <lastmod>2020-03-23T01:10:59.292Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2019/05/27/super-extends-js/</loc>
+    
+    <lastmod>2020-03-23T01:10:44.625Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2019/03/27/single-file-web-components/</loc>
+    
+    <lastmod>2020-03-23T01:10:36.819Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2019/03/26/css-hardware-accelerate/</loc>
+    
+    <lastmod>2020-03-23T01:10:14.665Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://windyard.com/2019/09/09/6-reasons-async-await/</loc>
     
-    <lastmod>2019-09-08T17:26:37.041Z</lastmod>
+    <lastmod>2020-03-23T01:10:00.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://windyard.com/2020/01/30/svg-line-animation/</loc>
+    
+    <lastmod>2020-03-22T16:55:38.543Z</lastmod>
     
   </url>
   
@@ -19,48 +61,6 @@
     <loc>https://windyard.com/2019/06/25/understanding-promise/</loc>
     
     <lastmod>2019-07-24T15:25:29.260Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/05/27/super-extends-js/</loc>
-    
-    <lastmod>2019-06-07T16:52:43.155Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/04/01/web-components-hero-1/</loc>
-    
-    <lastmod>2019-05-26T15:06:12.638Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/03/31/sw-in-5m/</loc>
-    
-    <lastmod>2019-04-05T08:17:34.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/02/08/Use-jquery-in-vue/</loc>
-    
-    <lastmod>2019-04-05T08:07:18.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/03/26/css-hardware-accelerate/</loc>
-    
-    <lastmod>2019-04-05T08:06:26.845Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://windyard.com/2019/03/27/single-file-web-components/</loc>
-    
-    <lastmod>2019-04-05T02:29:51.596Z</lastmod>
     
   </url>
   
