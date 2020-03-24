@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>标签: ES6 - Windyard</title>
+<title>Windyard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css"> -->
@@ -15,11 +15,15 @@
 
 
 
-    <meta property="og:type" content="website">
+    <meta name="description" content="1) { %&gt;">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Windyard">
-<meta property="og:url" content="https://windyard.com/tags/ES6/index.html">
+<meta property="og:url" content="https://windyard.com/about/index.html">
 <meta property="og:site_name" content="Windyard">
+<meta property="og:description" content="1) { %&gt;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-24T11:57:02.410Z">
+<meta property="article:modified_time" content="2020-03-24T11:57:02.409Z">
 <meta property="article:author" content="w.z">
 <meta name="twitter:card" content="summary">
 
@@ -80,7 +84,7 @@
             <a class="navbar-item "
                href="/archives">Archives</a>
             
-            <a class="navbar-item "
+            <a class="navbar-item is-active"
                href="/about">About</a>
             
         </div>
@@ -93,44 +97,39 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5>#ES6</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/03/27/single-file-web-components/" itemprop="url">「译」动手实现一个单文件 Web Components</a>
+            
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-03-27T15:02:12.000Z" itemprop="datePublished">3月 27 2019</time>
+            <time datetime="2020-03-24T11:57:02.410Z" itemprop="datePublished">3月 24 2020</time>
         </span>
         
         
         <span class="column is-narrow">
             
             
-            31 分钟 读完 (约 4710 字)
+            几秒 读完 (约 17 字)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p><strong><em>作者：<a href="https://medium.com/@ComandeerPL" target="_blank" rel="noopener">Tomasz Jakut</a></em></strong><br><strong><em>原文链接：<a href="https://medium.com/content-uneditable/implementing-single-file-web-components-22adeaa0cd17" target="_blank" rel="noopener">Implementing single file Web Components</a></em></strong></p>
-<p><img src="/pictures/3-single-file-components/headimg.png" alt></p>
-<p>可能每个了解 Vue 框架的人都听说过它的“单文件组件（single file components）”。这个超简单的概念让 Web 开发人员可以只用一个文件来定一个组件。这个解决方案非常好用以至于<a href="https://github.com/TheLarkInn/unity-component-specification" target="_blank" rel="noopener">一个在浏览器中包含这种机制的提案</a>已经出现。</p>
-<p>不过很不幸的是，这个提案貌似已经死掉了，从 2017 年 8 月以后就再没有任何进展。即使如此，在现有可行技术下研究这个话题并且创建一个可以在浏览器中运行的单文件组件仍然值得写一篇文章！</p></body></html>
-        <p class="article-more-link">
-            <a href="/2019/03/27/single-file-web-components/#more">阅读更多</a>
-        </p>
+        <html><head></head><body><section class="section">
+    <div class="container">
+    <% page.posts.each(function(post){ %>
+        <%- partial('common/article', { post, index: true }) %>
+    <% }); %>
+    <% if (page.total > 1) { %>
+        <%- partial('common/paginator') %>
+    <% } %>
+    </div>
+</section></body></html>
     
     </div>
     
@@ -139,13 +138,18 @@
 
 
 
+<div class="server-recommand">
+    广告：
+    <a href="https://www.vultr.com/?ref=8256770" target="_blank" rel="noopener">
+        <img src="https://www.vultr.com/media/banners/banner_728x90.png" />
+    </a>
+</div>
 
 
 
 
 
-    
-    
+
     </div>
 </section>
     <footer class="footer">
