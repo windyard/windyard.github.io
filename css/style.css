@@ -38,8 +38,9 @@ a.tag.article-tag {
 .navbar-burger span {
   background-color: #2aada3; }
 
-.navbar-menu {
-  background-color: rgba(0, 0, 0, 0.13); }
+@media screen and (max-width: 1024px) {
+  .navbar-menu {
+    background-color: rgba(0, 0, 0, 0.13); } }
 
 .article + .article {
   padding-top: 2rem;
