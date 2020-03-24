@@ -35,6 +35,12 @@ a.tag.article-tag {
     max-height: 500px;
     overflow-y: auto; }
 
+.navbar-burger span {
+  background-color: #2aada3; }
+
+.navbar-menu {
+  background-color: rgba(0, 0, 0, 0.13); }
+
 .article + .article {
   padding-top: 2rem;
   border-top: 1px solid #dbdbdb; }
